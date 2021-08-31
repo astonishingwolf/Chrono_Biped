@@ -41,25 +41,25 @@
            -Concentric6 [MateConcentric]
            -Coincident5 [MateCoincident]
            -Coincident6 [MateCoincident]
-           -Concentric7 [MateConcentric]
-   +leg2-1 <Default>
+           -Concentric12 [MateConcentric]
+   +torso_backet-2 <Default>
            -Comments [CommentsFolder]
            -Sketch1 [ProfileFeature]
    +leg2-2 <Default>
            -Comments [CommentsFolder]
            -Sketch1 [ProfileFeature]
-   +torso_backet-2 <Default>
-           -Comments [CommentsFolder]
-           -Sketch1 [ProfileFeature]
-   +knee-2 <Default>
-           -Comments [CommentsFolder]
-           -Sketch1 [ProfileFeature]
    +knee-1 <Default>
+           -Comments [CommentsFolder]
+           -Sketch1 [ProfileFeature]
+   +torso-1 <Default>
            -Comments [CommentsFolder]
            -Sketch1 [ProfileFeature]
    +torso_backet-1 <Default>
            -Comments [CommentsFolder]
            -Sketch1 [ProfileFeature]
-   +torso-1 <Default>
+   +knee-2 <Default>
+           -Comments [CommentsFolder]
+           -Sketch1 [ProfileFeature]
+   +leg2-1 <Default>
            -Comments [CommentsFolder]
            -Sketch1 [ProfileFeature]
