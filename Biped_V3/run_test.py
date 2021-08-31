@@ -72,19 +72,57 @@ it = []
 for my_item in exported_items:
     my_system.Add(my_item)
     it.append(my_item)
-    
+
+#printing Component names
+
+# Print exported items
+for my_item in exported_items:
+	print (my_item.GetName())
+
+
 ground = chrono.ChBody()
 ground.SetBodyFixed(True)
 my_system.Add(ground)        
 # Optionally set some solver parameters.
+#Motors Variables
 
+#Between Torso_backet-2 and torso
 my_motor = chrono.ChLinkMotorRotationSpeed()
-my_motor.Initialize(it[1],   # the first connected body
-                    it[2],   # the second connected body
+my_motor.Initialize(it[4],   # the first connected body
+                    it[5],   # the second connected body
                     chrono.ChFrameD(chrono.ChVectorD(0.0122275345305963,0.00120884241999014,0.0332147998549766))) # where to create the motor in abs.space
 my_angularspeed = chrono.ChFunction_Const(chrono.CH_C_PI) # ang.speed: 180°/s
 my_motor.SetMotorFunction(my_angularspeed)
 #my_system.Add(my_motor)
+
+#Between Torso_backet-1 and torso
+my_motor1 = chrono.ChLinkMotorRotationSpeed()
+my_motor1.Initialize(it[4],   # the first connected body
+                    it[1],   # the second connected body
+                    chrono.ChFrameD(chrono.ChVectorD(0.0672275345305962,0.00120884241999013,0.0332147998549766))) # where to create the motor in abs.space
+my_angularspeed = chrono.ChFunction_Const(chrono.CH_C_PI) # ang.speed: 180°/s
+my_motor1.SetMotorFunction(my_angularspeed)
+#my_system.Add(my_motor1)
+
+#Between Torso_backet-1 and torso
+my_motor1 = chrono.ChLinkMotorRotationSpeed()
+my_motor1.Initialize(it[4],   # the first connected body
+                    it[1],   # the second connected body
+                    chrono.ChFrameD(chrono.ChVectorD(0.0672275345305962,0.00120884241999013,0.0332147998549766))) # where to create the motor in abs.space
+my_angularspeed = chrono.ChFunction_Const(chrono.CH_C_PI) # ang.speed: 180°/s
+my_motor1.SetMotorFunction(my_angularspeed)
+#my_system.Add(my_motor1)
+
+#Between Torso_backet-1 and torso
+my_motor2 = chrono.ChLinkMotorRotationSpeed()
+my_motor2.Initialize(it[1],   # the first connected body
+                    it[3],   # the second connected body
+                    chrono.ChFrameD(chrono.ChVectorD(0.137187275150366,-0.0234058826935368,0.0162147998549767))) # where to create the motor in abs.space
+my_angularspeed = chrono.ChFunction_Const(chrono.CH_C_PI) # ang.speed: 180°/s
+my_motor2.SetMotorFunction(my_angularspeed)
+my_system.Add(my_motor2)
+
+
 
 terrain = veh.SCMDeformableTerrain(my_system)
 terrain.SetPlane(chrono.ChCoordsysD(chrono.ChVectorD(0,0.2,0), chrono.Q_from_AngX(-math.pi/2)))
