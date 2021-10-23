@@ -1,0 +1,45 @@
+# Dump hierarchy from SolidWorks 
+# Assembly: C:\Users\dasgu\Documents\Chrono_Biped\Biped_V5\Assem1.SLDASM
+
+
+         -Comments [CommentsFolder]
+         -Favorites [FavoriteFolder]
+         -History [HistoryFolder]
+         -Selection Sets [SelectionSetFolder]
+         -Sensors [SensorFolder]
+         -Live Section Planes [LiveSectionFolder]
+         -Design Binder [DocsFolder]
+         -Annotations [DetailCabinet]
+           -Notes [NotesAreaFtrFolder]
+           -Notes1___EndTag___ [NotesAreaFtrFolder]
+         -Lights, Cameras and Scene [EnvFolder]
+           -Ambient [AmbientLight]
+           -Directional1 [DirectionLight]
+           -Directional2 [DirectionLight]
+           -Directional3 [DirectionLight]
+         -Equations [EqnFolder]
+         -Front Plane [RefPlane]
+         -Top Plane [RefPlane]
+         -Right Plane [RefPlane]
+         -Origin [OriginProfileFeature]
+         -Main_leg-5 [Reference]
+         -Main_leg-6 [Reference]
+         -Main_leg-7 [Reference]
+         -Main_leg-8 [Reference]
+         -Mates [MateGroup]
+           -Concentric8 [MateConcentric]
+           -Concentric9 [MateConcentric]
+           -Coincident15 [MateCoincident]
+           -Coincident16 [MateCoincident]
+   +Main_leg-8 <Default>
+           -Comments [CommentsFolder]
+           -Sketch1 [ProfileFeature]
+   +Main_leg-6 <Default>
+           -Comments [CommentsFolder]
+           -Sketch1 [ProfileFeature]
+   +Main_leg-5 <Default>
+           -Comments [CommentsFolder]
+           -Sketch1 [ProfileFeature]
+   +Main_leg-7 <Default>
+           -Comments [CommentsFolder]
+           -Sketch1 [ProfileFeature]

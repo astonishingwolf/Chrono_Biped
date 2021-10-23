@@ -9,10 +9,10 @@ if __name__ == '__main__':
 
 import os
 import math
-import time
-import sys, getopt
+#import time
+#import sys, getopt
 import pychrono as chrono
-import pychrono.postprocess as postprocess
+#import pychrono.postprocess as postprocess
 import pychrono.irrlicht as chronoirr
 import pychrono.vehicle as veh
 
@@ -67,10 +67,14 @@ m_modulename = os.path.splitext(m_absfilename)[0]
 exported_items = chrono.ImportSolidWorksSystem(m_modulename)
 
 # Add items to the physical system
-my_system = chrono.ChSystemNSC()
+my_system = chrono.ChSystemSMC()
 it = []
+add = 0
 for my_item in exported_items:
-    my_system.Add(my_item)
+    add+=1
+print(add)
+for i in range(add):
+    my_system.Add(exported_items[i])
     it.append(my_item)
 
 #printing Component names
@@ -85,7 +89,8 @@ ground.SetBodyFixed(True)
 my_system.Add(ground)        
 # Optionally set some solver parameters.
 #Motors Variables
-
+st = chrono.ChVectorD(0.0122275345305963,0.00120884241999014,0.0332147998549766)
+sc = chrono.ChVectorD(0.245,0.0,0.0)
 #Between Torso_backet-2 and torso
 my_motor = chrono.ChLinkMotorRotationSpeed()
 my_motor.Initialize(it[4],   # the first connected body
@@ -115,9 +120,9 @@ my_motor1.SetMotorFunction(my_angularspeed)
 
 #Between Torso_backet-1 and torso
 my_motor2 = chrono.ChLinkMotorRotationSpeed()
-my_motor2.Initialize(it[1],   # the first connected body
-                    it[3],   # the second connected body
-                    chrono.ChFrameD(chrono.ChVectorD(0.137187275150366,-0.0234058826935368,0.0162147998549767))) # where to create the motor in abs.space
+my_motor2.Initialize(it[5],   # the first connected body
+                    it[6],   # the second connected body
+                    chrono.ChFrameD(st+sc)) # where to create the motor in abs.space
 my_angularspeed = chrono.ChFunction_Const(chrono.CH_C_PI) # ang.speed: 180°/s
 my_motor2.SetMotorFunction(my_angularspeed)
 my_system.Add(my_motor2)
