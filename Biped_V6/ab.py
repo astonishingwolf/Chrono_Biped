@@ -40,7 +40,7 @@ body_1.GetCollisionModel().AddTriangleMesh(material,                # contact ma
                                             0.01)                    # "thickness" for increased robustness
 body_1.GetCollisionModel().BuildModel()
 body_1.SetBodyFixed(True)
-body_1.SetCollide(False)
+body_1.SetCollide(True)
 
 # Visualization shape 
 body_1_1_shape = chrono.ChObjShapeFile() 
@@ -77,8 +77,8 @@ body_2.GetCollisionModel().AddTriangleMesh(material_2,                # contact 
                                             chrono.ChMatrix33D(1),   # orientation on body 
                                             0.01)                    # "thickness" for increased robustness
 body_2.GetCollisionModel().BuildModel()
-body_2.SetBodyFixed(True)
-body_2.SetCollide(False)
+body_2.SetBodyFixed(False)
+body_2.SetCollide(True)
 # Visualization shape 
 body_2_1_shape = chrono.ChObjShapeFile() 
 body_2_1_shape.SetFilename(shapes_dir +'body_2_1.obj') 
@@ -114,7 +114,7 @@ body_3.GetCollisionModel().AddTriangleMesh(material_3,                # contact 
                                             chrono.ChMatrix33D(1),   # orientation on body 
                                             0.01)                    # "thickness" for increased robustness
 body_3.GetCollisionModel().BuildModel()
-body_3.SetBodyFixed(True)
+body_3.SetBodyFixed(False)
 body_3.SetCollide(False)
 # Visualization shape 
 body_2_1_shape = chrono.ChObjShapeFile() 
@@ -151,7 +151,7 @@ body_4.GetCollisionModel().AddTriangleMesh(material_4,                # contact 
                                             chrono.ChMatrix33D(1),   # orientation on body 
                                             0.01)                    # "thickness" for increased robustness
 body_4.GetCollisionModel().BuildModel()
-body_4.SetBodyFixed(True)
+body_4.SetBodyFixed(False)
 body_4.SetCollide(False)
 
 # Visualization shape 
@@ -190,7 +190,7 @@ body_5.GetCollisionModel().AddTriangleMesh(material_5,                # contact 
                                             0.01)                    # "thickness" for increased robustness
 body_5.GetCollisionModel().BuildModel()
 body_5.SetBodyFixed(False)
-body_5.SetCollide(False)
+body_5.SetCollide(True)
 # Visualization shape 
 body_2_1_shape = chrono.ChObjShapeFile() 
 body_2_1_shape.SetFilename(shapes_dir +'body_2_1.obj') 
@@ -417,7 +417,7 @@ dB = chrono.ChVectorD(1,0,0)
 link_17.Initialize(body_2,body_3,False,cA,cB,dB)
 link_17.SetDistance(0)
 link_17.SetName("Coincident5")
-exported_items.append(link_17)
+#exported_items.append(link_17)
 
 link_18 = chrono.ChLinkMateParallel()
 cA = chrono.ChVectorD(0.05,-0.355,0.41)
@@ -426,7 +426,7 @@ cB = chrono.ChVectorD(0.0500000000000001,-0.655,0.51)
 dB = chrono.ChVectorD(1,0,0)
 link_18.Initialize(body_2,body_3,False,cA,cB,dA,dB)
 link_18.SetName("Coincident5")
-exported_items.append(link_18)
+#exported_items.append(link_18)
 
 
 # Mate constraint: Coincident6 [MateCoincident] type:0 align:0 flip:False
@@ -441,7 +441,7 @@ dB = chrono.ChVectorD(1,-1.38777878078145e-17,0)
 link_19.Initialize(body_4,body_5,False,cA,cB,dB)
 link_19.SetDistance(0)
 link_19.SetName("Coincident6")
-exported_items.append(link_19)
+#exported_items.append(link_19)
 
 link_20 = chrono.ChLinkMateParallel()
 cA = chrono.ChVectorD(0.05,-0.295,-2.42861286636753e-17)
@@ -450,7 +450,7 @@ cB = chrono.ChVectorD(0.05,0.00499999999999995,-3.46944695195361e-18)
 dB = chrono.ChVectorD(1,-1.38777878078145e-17,0)
 link_20.Initialize(body_4,body_5,False,cA,cB,dA,dB)
 link_20.SetName("Coincident6")
-exported_items.append(link_20)
+#exported_items.append(link_20)
 
 
 # Mate constraint: Coincident7 [MateCoincident] type:0 align:0 flip:False
@@ -465,7 +465,7 @@ dB = chrono.ChVectorD(1,6.93889390390723e-18,0)
 link_21.Initialize(body_1,body_2,False,cA,cB,dB)
 link_21.SetDistance(0)
 link_21.SetName("Coincident7")
-exported_items.append(link_21)
+#exported_items.append(link_21)
 
 link_22 = chrono.ChLinkMateParallel()
 cA = chrono.ChVectorD(0.05,-0.025,0.41)
@@ -474,7 +474,7 @@ cB = chrono.ChVectorD(0.05,-0.355,0.41)
 dB = chrono.ChVectorD(1,6.93889390390723e-18,0)
 link_22.Initialize(body_1,body_2,False,cA,cB,dA,dB)
 link_22.SetName("Coincident7")
-exported_items.append(link_22)
+#exported_items.append(link_22)
 
 
 # Mate constraint: Coincident8 [MateCoincident] type:0 align:0 flip:False
@@ -489,7 +489,7 @@ dB = chrono.ChVectorD(1,-1.38777878078145e-17,0)
 link_23.Initialize(body_1,body_5,False,cA,cB,dB)
 link_23.SetDistance(0)
 link_23.SetName("Coincident8")
-exported_items.append(link_23)
+#exported_items.append(link_23)
 
 link_24 = chrono.ChLinkMateParallel()
 cA = chrono.ChVectorD(0.05,-0.025,0.41)
@@ -498,7 +498,7 @@ cB = chrono.ChVectorD(0.05,0.00499999999999995,-3.46944695195361e-18)
 dB = chrono.ChVectorD(1,-1.38777878078145e-17,0)
 link_24.Initialize(body_1,body_5,False,cA,cB,dA,dB)
 link_24.SetName("Coincident8")
-exported_items.append(link_24)
+#exported_items.append(link_24)
 
 
 # Mate constraint: Coincident9 [MateCoincident] type:0 align:1 flip:False
@@ -513,7 +513,7 @@ dB = chrono.ChVectorD(0,0,1)
 link_25.Initialize(body_5,body_0,False,cA,cB,dB)
 link_25.SetDistance(0)
 link_25.SetName("Coincident9")
-exported_items.append(link_25)
+#exported_items.append(link_25)
 
 link_26 = chrono.ChLinkMateParallel()
 cA = chrono.ChVectorD(3.46944695195361e-17,0.00499999999999995,-3.46944695195361e-18)
@@ -523,7 +523,7 @@ dB = chrono.ChVectorD(0,0,1)
 link_26.SetFlipped(True)
 link_26.Initialize(body_5,body_0,False,cA,cB,dA,dB)
 link_26.SetName("Coincident9")
-exported_items.append(link_26)
+#exported_items.append(link_26)
 
 
 # Mate constraint: Coincident10 [MateCoincident] type:0 align:0 flip:False
@@ -538,7 +538,7 @@ dB = chrono.ChVectorD(0,1,0)
 link_27.Initialize(body_1,body_0,False,cA,cB,dB)
 link_27.SetDistance(0)
 link_27.SetName("Coincident10")
-exported_items.append(link_27)
+#exported_items.append(link_27)
 
 link_28 = chrono.ChLinkMateParallel()
 cA = chrono.ChVectorD(0.025,0,0.41)
@@ -547,7 +547,7 @@ cB = chrono.ChVectorD(0,0,0)
 dB = chrono.ChVectorD(0,1,0)
 link_28.Initialize(body_1,body_0,False,cA,cB,dA,dB)
 link_28.SetName("Coincident10")
-exported_items.append(link_28)
+#exported_items.append(link_28)
 
 
 # Mate constraint: Coincident11 [MateCoincident] type:0 align:1 flip:False
@@ -562,7 +562,7 @@ dB = chrono.ChVectorD(1,0,0)
 link_29.Initialize(body_1,body_0,False,cA,cB,dB)
 link_29.SetDistance(0)
 link_29.SetName("Coincident11")
-exported_items.append(link_29)
+#exported_items.append(link_29)
 
 link_30 = chrono.ChLinkMateParallel()
 cA = chrono.ChVectorD(-3.46944695195361e-18,-0.025,0.41)
@@ -572,5 +572,5 @@ dB = chrono.ChVectorD(1,0,0)
 link_30.SetFlipped(True)
 link_30.Initialize(body_1,body_0,False,cA,cB,dA,dB)
 link_30.SetName("Coincident11")
-exported_items.append(link_30)
+#exported_items.append(link_30)
 

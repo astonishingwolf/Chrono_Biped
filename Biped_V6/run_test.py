@@ -122,11 +122,20 @@ for my_item in exported_items:
 my_motor = chrono.ChLinkMotorRotationSpeed()
 my_motor.Initialize(it[1],   # the first connected body
                     it[5],   # the second connected body
-                    chrono.ChFrameD(chrono.ChVectorD(0.025,-0.025,-0.25),chrono.Q_ROTATE_X_TO_Z)) # where to create the motor in abs.space
+                    chrono.ChFrameD(chrono.ChVectorD(0.025,-0.025,-0.25))) # where to create the motor in abs.space
 my_angularspeed = chrono.ChFunction_Const(chrono.CH_C_PI) # ang.speed: 180°/s
 my_angularspeed = chrono.ChFunction_Const(chrono.CH_C_PI) # ang.speed: 180°/s
 my_motor.SetMotorFunction(my_angularspeed)
 mysystem.Add(my_motor)
+
+my_motor1 = chrono.ChLinkMotorRotationSpeed()
+my_motor1.Initialize(it[1],   # the first connected body
+                    it[2],   # the second connected body
+                    chrono.ChFrameD(chrono.ChVectorD(0.025,-0.025,0.41))) # where to create the motor in abs.space
+my_angularspeed1 = chrono.ChFunction_Const(chrono.CH_C_PI) # ang.speed: 180°/s
+my_angularspeed1 = chrono.ChFunction_Const(chrono.CH_C_PI) # ang.speed: 180°/s
+my_motor1.SetMotorFunction(my_angularspeed1)
+mysystem.Add(my_motor1)
 #Between Torso_backet-2 and torso
 #my_motor1 = chrono.ChLinkMotorRotationSpeed()
 #my_motor1.Initialize(it[2],   # the first connected body
@@ -140,7 +149,7 @@ mysystem.Add(my_motor)
 
 
 terrain = veh.SCMDeformableTerrain(mysystem)
-terrain.SetPlane(chrono.ChCoordsysD(chrono.ChVectorD(0,-0.75,0), chrono.Q_from_AngX(-math.pi/2)))
+terrain.SetPlane(chrono.ChCoordsysD(chrono.ChVectorD(0,-0.35,0), chrono.Q_from_AngX(-math.pi/2)))
 terrain.Initialize(2.0, 6.0, 0.04)#gives us the dimension of the plane
 
 my_params = MySoilParams()
@@ -166,7 +175,7 @@ terrain.SetPlotType(veh.SCMDeformableTerrain.PLOT_PRESSURE, 0, 30000.2)
 #my_system.SetMaxPenetrationRecoverySpeed(1.00)
 my_solver = chrono.ChSolverBB()
 mysystem.SetSolver(my_solver)
-my_solver.SetMaxIterations(600)
+my_solver.SetMaxIterations(60000)
 my_solver.EnableWarmStart(True);
 mysystem.Set_G_acc(chrono.ChVectorD(0,-9.8,0))
     
