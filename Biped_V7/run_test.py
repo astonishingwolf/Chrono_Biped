@@ -143,7 +143,7 @@ my_motor2.Initialize(it[3],   # the first connected body
 my_angularspeed2 = chrono.ChFunction_Const(chrono.CH_C_PI) # ang.speed: 180°/s
 my_angularspeed2 = chrono.ChFunction_Const(chrono.CH_C_PI) # ang.speed: 180°/s
 my_motor2.SetMotorFunction(my_angularspeed2)
-mysystem.Add(my_motor2)
+#mysystem.Add(my_motor2)
 
 my_motor3 = chrono.ChLinkMotorRotationSpeed()
 my_motor3.Initialize(it[4],   # the first connected body
@@ -152,7 +152,7 @@ my_motor3.Initialize(it[4],   # the first connected body
 my_angularspeed3 = chrono.ChFunction_Const(chrono.CH_C_PI) # ang.speed: 180°/s
 my_angularspeed3 = chrono.ChFunction_Const(chrono.CH_C_PI) # ang.speed: 180°/s
 my_motor3.SetMotorFunction(my_angularspeed3)
-mysystem.Add(my_motor3)
+#mysystem.Add(my_motor3)
 
 
 #Between Torso_backet-2 and torso
@@ -168,8 +168,8 @@ mysystem.Add(my_motor3)
 
 
 terrain = veh.SCMDeformableTerrain(mysystem)
-terrain.SetPlane(chrono.ChCoordsysD(chrono.ChVectorD(0,-0.15,0), chrono.Q_from_AngX(-math.pi/2)))
-terrain.Initialize(2.0, 6.0, 0.04)#gives us the dimension of the plane
+terrain.SetPlane(chrono.ChCoordsysD(chrono.ChVectorD(0,-0.35,0), chrono.Q_from_AngX(-math.pi/2)))
+terrain.Initialize(4.0, 12.0, 0.004)#gives us the dimension of the plane
 
 my_params = MySoilParams()
 if var_params:
@@ -194,7 +194,7 @@ terrain.SetPlotType(veh.SCMDeformableTerrain.PLOT_PRESSURE, 0, 30000.2)
 #my_system.SetMaxPenetrationRecoverySpeed(1.00)
 my_solver = chrono.ChSolverBB()
 mysystem.SetSolver(my_solver)
-my_solver.SetMaxIterations(9000000)
+my_solver.SetMaxIterations(6000)
 my_solver.EnableWarmStart(True);
 mysystem.Set_G_acc(chrono.ChVectorD(0,-9.8,0))
     
@@ -220,6 +220,8 @@ if m_visualization == "irrlicht":
     myapplication.AssetBindAll()
     myapplication.AssetUpdateAll()
     myapplication.AddShadowAll()
+    myapplication.SetTimestep(0.01)
+
 
     
     while(myapplication.GetDevice().run()):

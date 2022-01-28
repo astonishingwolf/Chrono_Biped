@@ -41,7 +41,7 @@ body_1.GetCollisionModel().AddTriangleMesh(material,                # contact ma
                                             0.01)                    # "thickness" for increased robustness
 body_1.GetCollisionModel().BuildModel()
 body_1.SetBodyFixed(False)
-body_1.SetCollide(True)
+body_1.SetCollide(False)
 
 # Visualization shape 
 body_1_1_shape = chrono.ChObjShapeFile() 
@@ -158,7 +158,7 @@ body_4.GetCollisionModel().AddTriangleMesh(material_4,                # contact 
                                             0.01)                    # "thickness" for increased robustness
 body_4.GetCollisionModel().BuildModel()
 body_4.SetBodyFixed(False)
-body_4.SetCollide(True)
+body_4.SetCollide(False)
 
 # Visualization shape 
 body_1_1_shape = chrono.ChObjShapeFile() 
