@@ -38,7 +38,7 @@ class ChFunction_myf2 (chrono.ChFunction):
 #
 # Parse command-line parameters
 chrono.SetChronoDataPath(r"C:\Users\dasgu\Documents\Chrono_Biped\Biped_V8\bp_shapes")
-m_filename = "bp.py"
+m_filename = "cd.py"
 m_timestep = 0.01
 m_length = 1.0
 m_visualization = "irrlicht"
