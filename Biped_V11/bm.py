@@ -193,7 +193,7 @@ body_5.GetCollisionModel().AddTriangleMesh(material_5,                # contact 
                                             0.01)                    # "thickness" for increased robustness
 body_5.GetCollisionModel().BuildModel()
 body_5.SetBodyFixed(False)
-body_5.SetCollide(False)
+body_5.SetCollide(True)
 
 # Visualization shape 
 body_5_1_shape = chrono.ChObjShapeFile() 
@@ -345,7 +345,7 @@ body_9.GetCollisionModel().AddTriangleMesh(material_9,                # contact 
                                             0.01)                    # "thickness" for increased robustness
 body_9.GetCollisionModel().BuildModel()
 body_9.SetBodyFixed(False)
-body_9.SetCollide(False)
+body_9.SetCollide(True)
 
 # Visualization shape 
 body_5_1_shape = chrono.ChObjShapeFile() 
@@ -411,9 +411,9 @@ link_4.SetName("Coincident2")
 exported_items.append(link_4)
 
 
-# Mate constraint: Concentric3 [MateConcentric] type:1 align:1 flip:False
-#   Entity 0: C::E name: body_3 , SW name: Torso-1 ,  SW ref.type:2 (2)
-#   Entity 1: C::E name: body_8 , SW name: hinge-1 ,  SW ref.type:2 (2)
+# # Mate constraint: Concentric3 [MateConcentric] type:1 align:1 flip:False
+# #   Entity 0: C::E name: body_3 , SW name: Torso-1 ,  SW ref.type:2 (2)
+# #   Entity 1: C::E name: body_8 , SW name: hinge-1 ,  SW ref.type:2 (2)
 
 link_5 = chrono.ChLinkMateParallel()
 cA = chrono.ChVectorD(0.037,-0.00999999999999999,0.015)
@@ -461,9 +461,9 @@ link_8.SetName("Coincident3")
 exported_items.append(link_8)
 
 
-# Mate constraint: Concentric4 [MateConcentric] type:1 align:1 flip:False
-#   Entity 0: C::E name: body_6 , SW name: Leg-1 ,  SW ref.type:2 (2)
-#   Entity 1: C::E name: body_4 , SW name: hinge-2 ,  SW ref.type:2 (2)
+# # Mate constraint: Concentric4 [MateConcentric] type:1 align:1 flip:False
+# #   Entity 0: C::E name: body_6 , SW name: Leg-1 ,  SW ref.type:2 (2)
+# #   Entity 1: C::E name: body_4 , SW name: hinge-2 ,  SW ref.type:2 (2)
 
 link_9 = chrono.ChLinkMateParallel()
 cA = chrono.ChVectorD(-0.01,-0.032,0.325)
@@ -511,9 +511,9 @@ link_12.SetName("Coincident4")
 exported_items.append(link_12)
 
 
-# Mate constraint: Concentric5 [MateConcentric] type:1 align:0 flip:False
-#   Entity 0: C::E name: body_8 , SW name: hinge-1 ,  SW ref.type:2 (2)
-#   Entity 1: C::E name: body_1 , SW name: Leg-2 ,  SW ref.type:2 (2)
+# # Mate constraint: Concentric5 [MateConcentric] type:1 align:0 flip:False
+# #   Entity 0: C::E name: body_8 , SW name: hinge-1 ,  SW ref.type:2 (2)
+# #   Entity 1: C::E name: body_1 , SW name: Leg-2 ,  SW ref.type:2 (2)
 
 link_13 = chrono.ChLinkMateParallel()
 cA = chrono.ChVectorD(-0.01,-0.032,0.048)
@@ -560,9 +560,9 @@ link_16.SetName("Coincident5")
 exported_items.append(link_16)
 
 
-# Mate constraint: Concentric6 [MateConcentric] type:1 align:0 flip:False
-#   Entity 0: C::E name: body_1 , SW name: Leg-2 ,  SW ref.type:2 (2)
-#   Entity 1: C::E name: body_2 , SW name: Leg-3 ,  SW ref.type:2 (2)
+# # Mate constraint: Concentric6 [MateConcentric] type:1 align:0 flip:False
+# #   Entity 0: C::E name: body_1 , SW name: Leg-2 ,  SW ref.type:2 (2)
+# #   Entity 1: C::E name: body_2 , SW name: Leg-3 ,  SW ref.type:2 (2)
 
 link_17 = chrono.ChLinkMateParallel()
 cA = chrono.ChVectorD(-0.00999999999999998,-0.162,0.155)
@@ -609,9 +609,9 @@ link_20.SetName("Coincident8")
 exported_items.append(link_20)
 
 
-# Mate constraint: Concentric7 [MateConcentric] type:1 align:0 flip:False
-#   Entity 0: C::E name: body_6 , SW name: Leg-1 ,  SW ref.type:2 (2)
-#   Entity 1: C::E name: body_7 , SW name: Leg-4 ,  SW ref.type:2 (2)
+# # Mate constraint: Concentric7 [MateConcentric] type:1 align:0 flip:False
+# #   Entity 0: C::E name: body_6 , SW name: Leg-1 ,  SW ref.type:2 (2)
+# #   Entity 1: C::E name: body_7 , SW name: Leg-4 ,  SW ref.type:2 (2)
 
 link_21 = chrono.ChLinkMateParallel()
 cA = chrono.ChVectorD(-0.01,-0.162,0.325)
@@ -658,9 +658,9 @@ link_24.SetName("Coincident9")
 exported_items.append(link_24)
 
 
-# Mate constraint: Concentric8 [MateConcentric] type:1 align:1 flip:False
-#   Entity 0: C::E name: body_5 , SW name: foot1-1 ,  SW ref.type:2 (2)
-#   Entity 1: C::E name: body_2 , SW name: Leg-3 ,  SW ref.type:2 (2)
+# # Mate constraint: Concentric8 [MateConcentric] type:1 align:1 flip:False
+# #   Entity 0: C::E name: body_5 , SW name: foot1-1 ,  SW ref.type:2 (2)
+# #   Entity 1: C::E name: body_2 , SW name: Leg-3 ,  SW ref.type:2 (2)
 
 link_25 = chrono.ChLinkMateParallel()
 cA = chrono.ChVectorD(-0.00999999999999999,-0.292,-0.055)
@@ -708,9 +708,9 @@ link_28.SetName("Coincident10")
 exported_items.append(link_28)
 
 
-# Mate constraint: Concentric9 [MateConcentric] type:1 align:1 flip:False
-#   Entity 0: C::E name: body_7 , SW name: Leg-4 ,  SW ref.type:2 (2)
-#   Entity 1: C::E name: body_9 , SW name: foot1-2 ,  SW ref.type:2 (2)
+# # Mate constraint: Concentric9 [MateConcentric] type:1 align:1 flip:False
+# #   Entity 0: C::E name: body_7 , SW name: Leg-4 ,  SW ref.type:2 (2)
+# #   Entity 1: C::E name: body_9 , SW name: foot1-2 ,  SW ref.type:2 (2)
 
 link_29 = chrono.ChLinkMateParallel()
 cA = chrono.ChVectorD(-0.00999999999999997,-0.292,0.305)
@@ -761,204 +761,207 @@ exported_items.append(link_32)
 # Mate constraint: Coincident12 [MateCoincident] type:0 align:0 flip:False
 #   Entity 0: C::E name: body_3 , SW name: Torso-1 ,  SW ref.type:2 (2)
 #   Entity 1: C::E name:  , SW name: Assem1 ,  SW ref.type:4 (4)
-
-link_33 = chrono.ChLinkMateXdistance()
-cA = chrono.ChVectorD(0,-1.73472347597681e-18,0.2)
-cB = chrono.ChVectorD(0,0,0)
-dA = chrono.ChVectorD(1,1.73472347597681e-16,0)
-dB = chrono.ChVectorD(1,0,0)
-link_33.Initialize(body_3,body_0,False,cA,cB,dB)
-link_33.SetDistance(0)
-link_33.SetName("Coincident12")
-exported_items.append(link_33)
-
-link_34 = chrono.ChLinkMateParallel()
-cA = chrono.ChVectorD(0,-1.73472347597681e-18,0.2)
-dA = chrono.ChVectorD(1,1.73472347597681e-16,0)
-cB = chrono.ChVectorD(0,0,0)
-dB = chrono.ChVectorD(1,0,0)
-link_34.Initialize(body_3,body_0,False,cA,cB,dA,dB)
-link_34.SetName("Coincident12")
-exported_items.append(link_34)
-
-
-# Mate constraint: Coincident13 [MateCoincident] type:0 align:1 flip:False
-#   Entity 0: C::E name: body_3 , SW name: Torso-1 ,  SW ref.type:2 (2)
-#   Entity 1: C::E name:  , SW name: Assem1 ,  SW ref.type:4 (4)
-
-link_35 = chrono.ChLinkMateXdistance()
-cA = chrono.ChVectorD(-0.01,-0.01,0)
-cB = chrono.ChVectorD(0,0,0)
-dA = chrono.ChVectorD(0,0,-1)
-dB = chrono.ChVectorD(0,0,1)
-link_35.Initialize(body_3,body_0,False,cA,cB,dB)
-link_35.SetDistance(0)
-link_35.SetName("Coincident13")
-exported_items.append(link_35)
-
-link_36 = chrono.ChLinkMateParallel()
-cA = chrono.ChVectorD(-0.01,-0.01,0)
-dA = chrono.ChVectorD(0,0,-1)
-cB = chrono.ChVectorD(0,0,0)
-dB = chrono.ChVectorD(0,0,1)
-link_36.SetFlipped(True)
-link_36.Initialize(body_3,body_0,False,cA,cB,dA,dB)
-link_36.SetName("Coincident13")
-exported_items.append(link_36)
-
-
-# Mate constraint: Coincident14 [MateCoincident] type:0 align:0 flip:False
-#   Entity 0: C::E name: body_3 , SW name: Torso-1 ,  SW ref.type:2 (2)
-#   Entity 1: C::E name:  , SW name: Assem1 ,  SW ref.type:4 (4)
-
-link_37 = chrono.ChLinkMateXdistance()
-cA = chrono.ChVectorD(-0.02,-1.73472347597681e-18,0.2)
-cB = chrono.ChVectorD(0,0,0)
-dA = chrono.ChVectorD(0,1,0)
-dB = chrono.ChVectorD(0,1,0)
-link_37.Initialize(body_3,body_0,False,cA,cB,dB)
-link_37.SetDistance(0)
-link_37.SetName("Coincident14")
-exported_items.append(link_37)
-
-link_38 = chrono.ChLinkMateParallel()
-cA = chrono.ChVectorD(-0.02,-1.73472347597681e-18,0.2)
-dA = chrono.ChVectorD(0,1,0)
-cB = chrono.ChVectorD(0,0,0)
-dB = chrono.ChVectorD(0,1,0)
-link_38.Initialize(body_3,body_0,False,cA,cB,dA,dB)
-link_38.SetName("Coincident14")
-exported_items.append(link_38)
-
-
-# Mate constraint: Parallel1 [MateParallel] type:3 align:0 flip:False
-#   Entity 0: C::E name: body_3 , SW name: Torso-1 ,  SW ref.type:2 (2)
-#   Entity 1: C::E name: body_4 , SW name: hinge-2 ,  SW ref.type:2 (2)
-
-link_39 = chrono.ChLinkMateParallel()
-cA = chrono.ChVectorD(-0.01,-0.01,0.2)
-dA = chrono.ChVectorD(0,0,1)
-cB = chrono.ChVectorD(-6.93889390390723e-18,-0.01,0.1975)
-dB = chrono.ChVectorD(-1.22464679914735e-16,1.73472347597681e-16,1)
-link_39.Initialize(body_3,body_4,False,cA,cB,dA,dB)
-link_39.SetName("Parallel1")
-exported_items.append(link_39)
-
-
-# Mate constraint: Parallel2 [MateParallel] type:3 align:0 flip:False
-#   Entity 0: C::E name: body_3 , SW name: Torso-1 ,  SW ref.type:2 (2)
-#   Entity 1: C::E name: body_8 , SW name: hinge-1 ,  SW ref.type:2 (2)
-
-link_40 = chrono.ChLinkMateParallel()
-cA = chrono.ChVectorD(-0.01,-0.01,0)
-dA = chrono.ChVectorD(0,0,-1)
-cB = chrono.ChVectorD(-9.54097911787244e-18,-0.01,0.0025)
-dB = chrono.ChVectorD(1.0505695901855e-18,0,-1)
-link_40.Initialize(body_3,body_8,False,cA,cB,dA,dB)
-link_40.SetName("Parallel2")
-exported_items.append(link_40)
-
-
-# Mate constraint: Parallel3 [MateParallel] type:3 align:0 flip:False
-#   Entity 0: C::E name: body_8 , SW name: hinge-1 ,  SW ref.type:2 (2)
-#   Entity 1: C::E name: body_1 , SW name: Leg-2 ,  SW ref.type:2 (2)
-
-link_41 = chrono.ChLinkMateParallel()
-cA = chrono.ChVectorD(0.00199999999999999,-0.01,0.015)
-dA = chrono.ChVectorD(1,1.7812029254221e-16,1.0505695901855e-18)
-cB = chrono.ChVectorD(2.08166817117217e-17,-0.172,0.025)
-dB = chrono.ChVectorD(1,1.66533453693774e-16,-2.37859856229133e-17)
-link_41.Initialize(body_8,body_1,False,cA,cB,dA,dB)
-link_41.SetName("Parallel3")
-exported_items.append(link_41)
-
-
-# Mate constraint: Parallel4 [MateParallel] type:3 align:0 flip:False
-#   Entity 0: C::E name: body_6 , SW name: Leg-1 ,  SW ref.type:2 (2)
-#   Entity 1: C::E name: body_4 , SW name: hinge-2 ,  SW ref.type:2 (2)
-
-link_42 = chrono.ChLinkMateParallel()
-cA = chrono.ChVectorD(1.21430643318376e-17,-0.172,0.195)
-dA = chrono.ChVectorD(1,1.66533453693774e-16,1.22409076701743e-16)
-cB = chrono.ChVectorD(0.00199999999999999,-0.01,0.185)
-dB = chrono.ChVectorD(1,1.73472347597681e-16,1.22464679914735e-16)
-link_42.Initialize(body_6,body_4,False,cA,cB,dA,dB)
-link_42.SetName("Parallel4")
-exported_items.append(link_42)
-
-
-# Mate constraint: Coincident19 [MateCoincident] type:0 align:0 flip:False
-#   Entity 0: C::E name: body_6 , SW name: Leg-1 ,  SW ref.type:2 (2)
-#   Entity 1: C::E name: body_7 , SW name: Leg-4 ,  SW ref.type:2 (2)
-
-link_43 = chrono.ChLinkMateXdistance()
-cA = chrono.ChVectorD(1.21430643318376e-17,-0.172,0.195)
-cB = chrono.ChVectorD(4.68375338513738e-17,-0.302,0.175)
-dA = chrono.ChVectorD(1,1.66533453693774e-16,1.22409076701743e-16)
-dB = chrono.ChVectorD(1,1.66533453693774e-16,1.2240371413546e-16)
-link_43.Initialize(body_6,body_7,False,cA,cB,dB)
-link_43.SetDistance(0)
-link_43.SetName("Coincident19")
-exported_items.append(link_43)
-
-link_44 = chrono.ChLinkMateParallel()
-cA = chrono.ChVectorD(1.21430643318376e-17,-0.172,0.195)
-dA = chrono.ChVectorD(1,1.66533453693774e-16,1.22409076701743e-16)
-cB = chrono.ChVectorD(4.68375338513738e-17,-0.302,0.175)
-dB = chrono.ChVectorD(1,1.66533453693774e-16,1.2240371413546e-16)
-link_44.Initialize(body_6,body_7,False,cA,cB,dA,dB)
-link_44.SetName("Coincident19")
-exported_items.append(link_44)
-
-
-# Mate constraint: Coincident20 [MateCoincident] type:0 align:0 flip:False
-#   Entity 0: C::E name: body_1 , SW name: Leg-2 ,  SW ref.type:2 (2)
-#   Entity 1: C::E name: body_2 , SW name: Leg-3 ,  SW ref.type:2 (2)
-
-link_45 = chrono.ChLinkMateXdistance()
-cA = chrono.ChVectorD(2.08166817117217e-17,-0.172,0.025)
-cB = chrono.ChVectorD(-3.46944695195361e-18,-0.302,0.045)
-dA = chrono.ChVectorD(1,1.66533453693774e-16,-2.37859856229133e-17)
-dB = chrono.ChVectorD(1,-5.55111512312578e-17,-1.08753281892024e-17)
-link_45.Initialize(body_1,body_2,False,cA,cB,dB)
-link_45.SetDistance(0)
-link_45.SetName("Coincident20")
-exported_items.append(link_45)
-
-link_46 = chrono.ChLinkMateParallel()
-cA = chrono.ChVectorD(2.08166817117217e-17,-0.172,0.025)
-dA = chrono.ChVectorD(1,1.66533453693774e-16,-2.37859856229133e-17)
-cB = chrono.ChVectorD(-3.46944695195361e-18,-0.302,0.045)
-dB = chrono.ChVectorD(1,-5.55111512312578e-17,-1.08753281892024e-17)
-link_46.Initialize(body_1,body_2,False,cA,cB,dA,dB)
-link_46.SetName("Coincident20")
-exported_items.append(link_46)
-
-
-# Mate constraint: Parallel5 [MateParallel] type:3 align:0 flip:False
-#   Entity 0: C::E name: body_5 , SW name: foot1-1 ,  SW ref.type:2 (2)
-#   Entity 1: C::E name: body_2 , SW name: Leg-3 ,  SW ref.type:2 (2)
-
-link_47 = chrono.ChLinkMateParallel()
-cA = chrono.ChVectorD(0.048512258846341,-0.292,0.00499999999999999)
-dA = chrono.ChVectorD(1,0,0)
-cB = chrono.ChVectorD(-3.46944695195361e-18,-0.302,0.045)
-dB = chrono.ChVectorD(1,-5.55111512312578e-17,-1.08753281892024e-17)
-link_47.Initialize(body_5,body_2,False,cA,cB,dA,dB)
-link_47.SetName("Parallel5")
-exported_items.append(link_47)
-
-
-# Mate constraint: Parallel6 [MateParallel] type:3 align:0 flip:False
-#   Entity 0: C::E name: body_7 , SW name: Leg-4 ,  SW ref.type:2 (2)
-#   Entity 1: C::E name: body_9 , SW name: foot1-2 ,  SW ref.type:2 (2)
-
-link_48 = chrono.ChLinkMateParallel()
-cA = chrono.ChVectorD(4.68375338513738e-17,-0.302,0.175)
-dA = chrono.ChVectorD(1,1.66533453693774e-16,1.2240371413546e-16)
-cB = chrono.ChVectorD(0.0485122588463411,-0.292,0.135)
-dB = chrono.ChVectorD(1,0,0)
-link_48.Initialize(body_7,body_9,False,cA,cB,dA,dB)
-link_48.SetName("Parallel6")
-exported_items.append(link_48)
-
+# =============================================================================
+# 
+# link_33 = chrono.ChLinkMateXdistance()
+# cA = chrono.ChVectorD(0,-1.73472347597681e-18,0.2)
+# cB = chrono.ChVectorD(0,0,0)
+# dA = chrono.ChVectorD(1,1.73472347597681e-16,0)
+# dB = chrono.ChVectorD(1,0,0)
+# link_33.Initialize(body_3,body_0,False,cA,cB,dB)
+# link_33.SetDistance(0)
+# link_33.SetName("Coincident12")
+# exported_items.append(link_33)
+# 
+# link_34 = chrono.ChLinkMateParallel()
+# cA = chrono.ChVectorD(0,-1.73472347597681e-18,0.2)
+# dA = chrono.ChVectorD(1,1.73472347597681e-16,0)
+# cB = chrono.ChVectorD(0,0,0)
+# dB = chrono.ChVectorD(1,0,0)
+# link_34.Initialize(body_3,body_0,False,cA,cB,dA,dB)
+# link_34.SetName("Coincident12")
+# exported_items.append(link_34)
+# 
+# 
+# # Mate constraint: Coincident13 [MateCoincident] type:0 align:1 flip:False
+# #   Entity 0: C::E name: body_3 , SW name: Torso-1 ,  SW ref.type:2 (2)
+# #   Entity 1: C::E name:  , SW name: Assem1 ,  SW ref.type:4 (4)
+# 
+# link_35 = chrono.ChLinkMateXdistance()
+# cA = chrono.ChVectorD(-0.01,-0.01,0)
+# cB = chrono.ChVectorD(0,0,0)
+# dA = chrono.ChVectorD(0,0,-1)
+# dB = chrono.ChVectorD(0,0,1)
+# link_35.Initialize(body_3,body_0,False,cA,cB,dB)
+# link_35.SetDistance(0)
+# link_35.SetName("Coincident13")
+# exported_items.append(link_35)
+# 
+# link_36 = chrono.ChLinkMateParallel()
+# cA = chrono.ChVectorD(-0.01,-0.01,0)
+# dA = chrono.ChVectorD(0,0,-1)
+# cB = chrono.ChVectorD(0,0,0)
+# dB = chrono.ChVectorD(0,0,1)
+# link_36.SetFlipped(True)
+# link_36.Initialize(body_3,body_0,False,cA,cB,dA,dB)
+# link_36.SetName("Coincident13")
+# exported_items.append(link_36)
+# 
+# 
+# # Mate constraint: Coincident14 [MateCoincident] type:0 align:0 flip:False
+# #   Entity 0: C::E name: body_3 , SW name: Torso-1 ,  SW ref.type:2 (2)
+# #   Entity 1: C::E name:  , SW name: Assem1 ,  SW ref.type:4 (4)
+# 
+# link_37 = chrono.ChLinkMateXdistance()
+# cA = chrono.ChVectorD(-0.02,-1.73472347597681e-18,0.2)
+# cB = chrono.ChVectorD(0,0,0)
+# dA = chrono.ChVectorD(0,1,0)
+# dB = chrono.ChVectorD(0,1,0)
+# link_37.Initialize(body_3,body_0,False,cA,cB,dB)
+# link_37.SetDistance(0)
+# link_37.SetName("Coincident14")
+# exported_items.append(link_37)
+# 
+# link_38 = chrono.ChLinkMateParallel()
+# cA = chrono.ChVectorD(-0.02,-1.73472347597681e-18,0.2)
+# dA = chrono.ChVectorD(0,1,0)
+# cB = chrono.ChVectorD(0,0,0)
+# dB = chrono.ChVectorD(0,1,0)
+# link_38.Initialize(body_3,body_0,False,cA,cB,dA,dB)
+# link_38.SetName("Coincident14")
+# exported_items.append(link_38)
+# 
+# 
+# # Mate constraint: Parallel1 [MateParallel] type:3 align:0 flip:False
+# #   Entity 0: C::E name: body_3 , SW name: Torso-1 ,  SW ref.type:2 (2)
+# #   Entity 1: C::E name: body_4 , SW name: hinge-2 ,  SW ref.type:2 (2)
+# 
+# link_39 = chrono.ChLinkMateParallel()
+# cA = chrono.ChVectorD(-0.01,-0.01,0.2)
+# dA = chrono.ChVectorD(0,0,1)
+# cB = chrono.ChVectorD(-6.93889390390723e-18,-0.01,0.1975)
+# dB = chrono.ChVectorD(-1.22464679914735e-16,1.73472347597681e-16,1)
+# link_39.Initialize(body_3,body_4,False,cA,cB,dA,dB)
+# link_39.SetName("Parallel1")
+# exported_items.append(link_39)
+# 
+# 
+# # Mate constraint: Parallel2 [MateParallel] type:3 align:0 flip:False
+# #   Entity 0: C::E name: body_3 , SW name: Torso-1 ,  SW ref.type:2 (2)
+# #   Entity 1: C::E name: body_8 , SW name: hinge-1 ,  SW ref.type:2 (2)
+# 
+# link_40 = chrono.ChLinkMateParallel()
+# cA = chrono.ChVectorD(-0.01,-0.01,0)
+# dA = chrono.ChVectorD(0,0,-1)
+# cB = chrono.ChVectorD(-9.54097911787244e-18,-0.01,0.0025)
+# dB = chrono.ChVectorD(1.0505695901855e-18,0,-1)
+# link_40.Initialize(body_3,body_8,False,cA,cB,dA,dB)
+# link_40.SetName("Parallel2")
+# exported_items.append(link_40)
+# 
+# 
+# # Mate constraint: Parallel3 [MateParallel] type:3 align:0 flip:False
+# #   Entity 0: C::E name: body_8 , SW name: hinge-1 ,  SW ref.type:2 (2)
+# #   Entity 1: C::E name: body_1 , SW name: Leg-2 ,  SW ref.type:2 (2)
+# 
+# link_41 = chrono.ChLinkMateParallel()
+# cA = chrono.ChVectorD(0.00199999999999999,-0.01,0.015)
+# dA = chrono.ChVectorD(1,1.7812029254221e-16,1.0505695901855e-18)
+# cB = chrono.ChVectorD(2.08166817117217e-17,-0.172,0.025)
+# dB = chrono.ChVectorD(1,1.66533453693774e-16,-2.37859856229133e-17)
+# link_41.Initialize(body_8,body_1,False,cA,cB,dA,dB)
+# link_41.SetName("Parallel3")
+# exported_items.append(link_41)
+# 
+# 
+# # Mate constraint: Parallel4 [MateParallel] type:3 align:0 flip:False
+# #   Entity 0: C::E name: body_6 , SW name: Leg-1 ,  SW ref.type:2 (2)
+# #   Entity 1: C::E name: body_4 , SW name: hinge-2 ,  SW ref.type:2 (2)
+# 
+# link_42 = chrono.ChLinkMateParallel()
+# cA = chrono.ChVectorD(1.21430643318376e-17,-0.172,0.195)
+# dA = chrono.ChVectorD(1,1.66533453693774e-16,1.22409076701743e-16)
+# cB = chrono.ChVectorD(0.00199999999999999,-0.01,0.185)
+# dB = chrono.ChVectorD(1,1.73472347597681e-16,1.22464679914735e-16)
+# link_42.Initialize(body_6,body_4,False,cA,cB,dA,dB)
+# link_42.SetName("Parallel4")
+# exported_items.append(link_42)
+# 
+# 
+# # Mate constraint: Coincident19 [MateCoincident] type:0 align:0 flip:False
+# #   Entity 0: C::E name: body_6 , SW name: Leg-1 ,  SW ref.type:2 (2)
+# #   Entity 1: C::E name: body_7 , SW name: Leg-4 ,  SW ref.type:2 (2)
+# 
+# link_43 = chrono.ChLinkMateXdistance()
+# cA = chrono.ChVectorD(1.21430643318376e-17,-0.172,0.195)
+# cB = chrono.ChVectorD(4.68375338513738e-17,-0.302,0.175)
+# dA = chrono.ChVectorD(1,1.66533453693774e-16,1.22409076701743e-16)
+# dB = chrono.ChVectorD(1,1.66533453693774e-16,1.2240371413546e-16)
+# link_43.Initialize(body_6,body_7,False,cA,cB,dB)
+# link_43.SetDistance(0)
+# link_43.SetName("Coincident19")
+# exported_items.append(link_43)
+# 
+# link_44 = chrono.ChLinkMateParallel()
+# cA = chrono.ChVectorD(1.21430643318376e-17,-0.172,0.195)
+# dA = chrono.ChVectorD(1,1.66533453693774e-16,1.22409076701743e-16)
+# cB = chrono.ChVectorD(4.68375338513738e-17,-0.302,0.175)
+# dB = chrono.ChVectorD(1,1.66533453693774e-16,1.2240371413546e-16)
+# link_44.Initialize(body_6,body_7,False,cA,cB,dA,dB)
+# link_44.SetName("Coincident19")
+# exported_items.append(link_44)
+# 
+# 
+# # Mate constraint: Coincident20 [MateCoincident] type:0 align:0 flip:False
+# #   Entity 0: C::E name: body_1 , SW name: Leg-2 ,  SW ref.type:2 (2)
+# #   Entity 1: C::E name: body_2 , SW name: Leg-3 ,  SW ref.type:2 (2)
+# 
+# link_45 = chrono.ChLinkMateXdistance()
+# cA = chrono.ChVectorD(2.08166817117217e-17,-0.172,0.025)
+# cB = chrono.ChVectorD(-3.46944695195361e-18,-0.302,0.045)
+# dA = chrono.ChVectorD(1,1.66533453693774e-16,-2.37859856229133e-17)
+# dB = chrono.ChVectorD(1,-5.55111512312578e-17,-1.08753281892024e-17)
+# link_45.Initialize(body_1,body_2,False,cA,cB,dB)
+# link_45.SetDistance(0)
+# link_45.SetName("Coincident20")
+# exported_items.append(link_45)
+# 
+# link_46 = chrono.ChLinkMateParallel()
+# cA = chrono.ChVectorD(2.08166817117217e-17,-0.172,0.025)
+# dA = chrono.ChVectorD(1,1.66533453693774e-16,-2.37859856229133e-17)
+# cB = chrono.ChVectorD(-3.46944695195361e-18,-0.302,0.045)
+# dB = chrono.ChVectorD(1,-5.55111512312578e-17,-1.08753281892024e-17)
+# link_46.Initialize(body_1,body_2,False,cA,cB,dA,dB)
+# link_46.SetName("Coincident20")
+# exported_items.append(link_46)
+# 
+# 
+# # Mate constraint: Parallel5 [MateParallel] type:3 align:0 flip:False
+# #   Entity 0: C::E name: body_5 , SW name: foot1-1 ,  SW ref.type:2 (2)
+# #   Entity 1: C::E name: body_2 , SW name: Leg-3 ,  SW ref.type:2 (2)
+# 
+# link_47 = chrono.ChLinkMateParallel()
+# cA = chrono.ChVectorD(0.048512258846341,-0.292,0.00499999999999999)
+# dA = chrono.ChVectorD(1,0,0)
+# cB = chrono.ChVectorD(-3.46944695195361e-18,-0.302,0.045)
+# dB = chrono.ChVectorD(1,-5.55111512312578e-17,-1.08753281892024e-17)
+# link_47.Initialize(body_5,body_2,False,cA,cB,dA,dB)
+# link_47.SetName("Parallel5")
+# exported_items.append(link_47)
+# 
+# 
+# # Mate constraint: Parallel6 [MateParallel] type:3 align:0 flip:False
+# #   Entity 0: C::E name: body_7 , SW name: Leg-4 ,  SW ref.type:2 (2)
+# #   Entity 1: C::E name: body_9 , SW name: foot1-2 ,  SW ref.type:2 (2)
+# 
+# link_48 = chrono.ChLinkMateParallel()
+# cA = chrono.ChVectorD(4.68375338513738e-17,-0.302,0.175)
+# dA = chrono.ChVectorD(1,1.66533453693774e-16,1.2240371413546e-16)
+# cB = chrono.ChVectorD(0.0485122588463411,-0.292,0.135)
+# dB = chrono.ChVectorD(1,0,0)
+# link_48.Initialize(body_7,body_9,False,cA,cB,dA,dB)
+# link_48.SetName("Parallel6")
+# exported_items.append(link_48)
+# 
+# 
+# =============================================================================
