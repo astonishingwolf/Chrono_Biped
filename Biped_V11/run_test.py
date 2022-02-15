@@ -153,7 +153,7 @@ my_motor.Initialize(it[3],   # the first connected body
 #my_angularspeed2 = chrono.ChFunction_Const(chrono.CH_C_PI) # ang.speed: 180°/s
 my_angularspeed = chrono.ChFunction_Sine() # ang.speed: 180°/s
 my_motor.SetMotorFunction(my_angularspeed)
-mysystem.Add(my_motor)
+#mysystem.Add(my_motor)
 
 my_motor1 = chrono.ChLinkMotorRotationSpeed()
 my_motor1.Initialize(it[3],   # the first connected body
@@ -162,7 +162,7 @@ my_motor1.Initialize(it[3],   # the first connected body
 #my_angularspeed2 = chrono.ChFunction_Const(chrono.CH_C_PI) # ang.speed: 180°/s
 my_angularspeed1 = chrono.ChFunction_Sine() # ang.speed: 180°/s
 my_motor1.SetMotorFunction(my_angularspeed1)
-mysystem.Add(my_motor1)
+#mysystem.Add(my_motor1)
 
 my_motor2 = chrono.ChLinkMotorRotationSpeed()
 my_motor2.Initialize(it[4],   # the first connected body
@@ -172,7 +172,7 @@ my_motor2.Initialize(it[4],   # the first connected body
 my_angularspeed2 = chrono.ChFunction_Sine()
 #my_angularspeed2 = chrono.ChFunction_Const(chrono.CH_C_PI) # ang.speed: 180°/s
 my_motor2.SetMotorFunction(my_angularspeed2)
-mysystem.Add(my_motor2)
+#mysystem.Add(my_motor2)
 
 my_motor3 = chrono.ChLinkMotorRotationSpeed()
 my_motor3.Initialize(it[8],   # the first connected body
@@ -181,7 +181,7 @@ my_motor3.Initialize(it[8],   # the first connected body
 #my_angularspeed2 = chrono.ChFunction_Const(chrono.CH_C_PI) # ang.speed: 180°/s
 my_angularspeed3 = chrono.ChFunction_Sine() # ang.speed: 180°/s
 my_motor3.SetMotorFunction(my_angularspeed3)
-mysystem.Add(my_motor3)
+#mysystem.Add(my_motor3)
 
 my_motor4 = chrono.ChLinkMotorRotationSpeed()
 my_motor4.Initialize(it[1],   # the first connected body
@@ -190,7 +190,7 @@ my_motor4.Initialize(it[1],   # the first connected body
 #my_angularspeed2 = chrono.ChFunction_Const(chrono.CH_C_PI) # ang.speed: 180°/s
 my_angularspeed4 = chrono.ChFunction_Sine() # ang.speed: 180°/s
 my_motor4.SetMotorFunction(my_angularspeed4)
-mysystem.Add(my_motor4)
+#mysystem.Add(my_motor4)
 
 my_motor5 = chrono.ChLinkMotorRotationSpeed()
 my_motor5.Initialize(it[6],   # the first connected body
@@ -199,7 +199,7 @@ my_motor5.Initialize(it[6],   # the first connected body
 #my_angularspeed2 = chrono.ChFunction_Const(chrono.CH_C_PI) # ang.speed: 180°/s
 my_angularspeed5 = chrono.ChFunction_Sine() # ang.speed: 180°/s
 my_motor5.SetMotorFunction(my_angularspeed5)
-mysystem.Add(my_motor5)
+#mysystem.Add(my_motor5)
 
 my_motor6 = chrono.ChLinkMotorRotationSpeed()
 my_motor6.Initialize(it[2],   # the first connected body
@@ -208,7 +208,7 @@ my_motor6.Initialize(it[2],   # the first connected body
 #my_angularspeed2 = chrono.ChFunction_Const(chrono.CH_C_PI) # ang.speed: 180°/s
 my_angularspeed6 = chrono.ChFunction_Sine() # ang.speed: 180°/s
 my_motor6.SetMotorFunction(my_angularspeed6)
-mysystem.Add(my_motor6)
+#mysystem.Add(my_motor6)
 
 my_motor7 = chrono.ChLinkMotorRotationSpeed()
 my_motor7.Initialize(it[7],   # the first connected body
@@ -217,7 +217,7 @@ my_motor7.Initialize(it[7],   # the first connected body
 #my_angularspeed2 = chrono.ChFunction_Const(chrono.CH_C_PI) # ang.speed: 180°/s
 my_angularspeed7 = chrono.ChFunction_Sine() # ang.speed: 180°/s
 my_motor7.SetMotorFunction(my_angularspeed7)
-mysystem.Add(my_motor7)
+#mysystem.Add(my_motor7)
 
 
 # =============================================================================
@@ -300,6 +300,7 @@ mysystem.Add(my_motor7)
 # =============================================================================
 
 
+a = it[2].SetFrame_COG_to_REF
 terrain = veh.SCMDeformableTerrain(mysystem)
 terrain.SetPlane(chrono.ChCoordsysD(chrono.ChVectorD(0,-0.28,0), chrono.Q_from_AngX(-math.pi/2)))
 terrain.Initialize(4.0, 14.0, 0.004)#gives us the dimension of the plane
@@ -359,6 +360,9 @@ if m_visualization == "irrlicht":
     while(myapplication.GetDevice().run()):
         myapplication.BeginScene()
         myapplication.DrawAll()
+        a = it[2].GetFrame_COG_to_REF()
+        print(a.x)
         myapplication.DoStep()
         myapplication.EndScene()
+        
         
