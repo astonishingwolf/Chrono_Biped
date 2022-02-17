@@ -126,6 +126,74 @@ class MySoilParams (veh.SoilParametersCallback):
             self.m_elastic_K = 4e8
             self.m_damping_R = 3e4
 
+class MySoilParams1 (veh.SoilParametersCallback):
+    def __init__(self):
+        veh.SoilParametersCallback.__init__(self)
+    def Set(self, x, y):
+        if y > 0 :
+            self.m_Bekker_Kphi = 0.2e6
+            self.m_Bekker_Kc = 0
+            self.m_Bekker_n = 1.1
+            self.m_Mohr_cohesion = 0
+            self.m_Mohr_friction = 30
+            self.m_Janosi_shear = 0.01
+            self.m_elastic_K = 4e7
+            self.m_damping_R = 3e4
+        else:
+            self.m_Bekker_Kphi = 5301e3
+            self.m_Bekker_Kc = 102e3
+            self.m_Bekker_n = 0.793
+            self.m_Mohr_cohesion = 1.3e3
+            self.m_Mohr_friction = 31.1
+            self.m_Janosi_shear = 1.2e-2
+            self.m_elastic_K = 4e8
+            self.m_damping_R = 3e4
+
+class MySoilParams2 (veh.SoilParametersCallback):
+    def __init__(self):
+        veh.SoilParametersCallback.__init__(self)
+    def Set(self, x, y):
+        if y > 0 :
+            self.m_Bekker_Kphi = 0.2e6
+            self.m_Bekker_Kc = 0
+            self.m_Bekker_n = 1.1
+            self.m_Mohr_cohesion = 0
+            self.m_Mohr_friction = 30
+            self.m_Janosi_shear = 0.01
+            self.m_elastic_K = 4e7
+            self.m_damping_R = 3e4
+        else:
+            self.m_Bekker_Kphi = 5301e3
+            self.m_Bekker_Kc = 102e3
+            self.m_Bekker_n = 0.793
+            self.m_Mohr_cohesion = 1.3e3
+            self.m_Mohr_friction = 31.1
+            self.m_Janosi_shear = 1.2e-2
+            self.m_elastic_K = 4e8
+            self.m_damping_R = 3e4
+            
+class MySoilParams3 (veh.SoilParametersCallback):
+    def __init__(self):
+        veh.SoilParametersCallback.__init__(self)
+    def Set(self, x, y):
+        if y > 0 :
+            self.m_Bekker_Kphi = 0.2e6
+            self.m_Bekker_Kc = 0
+            self.m_Bekker_n = 1.1
+            self.m_Mohr_cohesion = 0
+            self.m_Mohr_friction = 30
+            self.m_Janosi_shear = 0.01
+            self.m_elastic_K = 4e7
+            self.m_damping_R = 3e4
+        else:
+            self.m_Bekker_Kphi = 5301e3
+            self.m_Bekker_Kc = 102e3
+            self.m_Bekker_n = 0.793
+            self.m_Mohr_cohesion = 1.3e3
+            self.m_Mohr_friction = 31.1
+            self.m_Janosi_shear = 1.2e-2
+            self.m_elastic_K = 4e8
+            self.m_damping_R = 3e4            
 # Global parameters for tire
 tire_rad = 0.8
 tire_vel_z0 = -3
@@ -411,17 +479,43 @@ motor_8array_angle  = []
 motor_8array_speed  = []
 
 ##Contact Forces
+frc1 = []
+frc2 = []
+trq1 = []
+trq2 = []
 
+## Pose and Orientation
+hip = []
+torso = []
 
 a = it[2].SetFrame_COG_to_REF
 terrain = veh.SCMDeformableTerrain(mysystem)
-terrain.SetPlane(chrono.ChCoordsysD(chrono.ChVectorD(0,-0.35,0), chrono.Q_from_AngX(-math.pi/2)))
-terrain.Initialize(4.0, 14.0, 0.004)#gives us the dimension of the plane
+terrain.SetPlane(chrono.ChCoordsysD(chrono.ChVectorD(-0.1,-0.35,-0.1), chrono.Q_from_AngX(-math.pi/2)))
+terrain.Initialize(0.60, 0.40, 0.004)#gives us the dimension of the plane
+
+terrain1 = veh.SCMDeformableTerrain(mysystem)
+terrain1.SetPlane(chrono.ChCoordsysD(chrono.ChVectorD(-0.1,-0.35,0.3), chrono.Q_from_AngX(-math.pi/2)))
+terrain1.Initialize(0.60, 0.40, 0.004)#gives us the dimension of the plane
+
+terrain2 = veh.SCMDeformableTerrain(mysystem)
+terrain2.SetPlane(chrono.ChCoordsysD(chrono.ChVectorD(0.5,-0.35,-0.1), chrono.Q_from_AngX(-math.pi/2)))
+terrain2.Initialize(1.0, 0.40, 0.004)#gives us the dimension of the plane
+
+terrain3 = veh.SCMDeformableTerrain(mysystem)
+terrain3.SetPlane(chrono.ChCoordsysD(chrono.ChVectorD(0.5,-0.35,0.3), chrono.Q_from_AngX(-math.pi/2)))
+terrain3.Initialize(1.0, 0.40, 0.004)#gives us the dimension of the plane
 
 my_params = MySoilParams()
+my_params1 = MySoilParams1()
+my_params2 = MySoilParams2()
+my_params3 = MySoilParams3()
+
 if var_params:
     # Location-dependent soil properties
     terrain.RegisterSoilParametersCallback(my_params)
+    terrain1.RegisterSoilParametersCallback(my_params1)
+    terrain2.RegisterSoilParametersCallback(my_params2)
+    terrain3.RegisterSoilParametersCallback(my_params3)
 else :
     # Constant soil properties
     terrain.SetSoilParameters(0.2e6,  # Bekker Kphi
@@ -473,8 +567,8 @@ if m_visualization == "irrlicht":
     while(myapplication.GetDevice().run()):
         myapplication.BeginScene()
         myapplication.DrawAll()
-        #a = it[2].GetFrame_COG_to_REF()
-        #print(a.x)
+        #hip.append(it[2].GetFrame_COG_to_abs().x)
+        torso.append(it[2].GetFrame_COG_to_REF())
         array_time.append(mysystem.GetChTime())
         motor_array_angle.append(my_motor.GetMotorRot())
         motor_array_speed.append(my_motor.GetMotorRot_dt())
@@ -494,26 +588,11 @@ if m_visualization == "irrlicht":
         motor_7array_speed.append(my_motor7.GetMotorRot_dt())  
         motor_8array_angle.append(my_motor8.GetMotorRot())
         motor_8array_speed.append(my_motor8.GetMotorRot_dt()) 
-        frc1 = it[1].GetContactForce()
-        trq1 = it[1].GetContactTorque()
-        frc2 = it[2].GetContactForce()
-        trq2 = it[2].GetContactTorque()
-        frc3 = it[3].GetContactForce()
-        trq3 = it[3].GetContactTorque()
-        frc4 = it[4].GetContactForce()
-        trq4 = it[4].GetContactTorque()
-        frc5 = it[5].GetContactForce()
-        trq5 = it[5].GetContactTorque()
-        frc6 = it[6].GetContactForce()
-        trq6 = it[6].GetContactTorque()
-        frc7 = it[7].GetContactForce()
-        trq7 = it[7].GetContactTorque()
-        frc8 = it[8].GetContactForce()
-        trq8 = it[8].GetContactTorque()
-        frc9 = it[9].GetContactForce()
-        trq9 = it[9].GetContactTorque()
-        frc10 = it[10].GetContactForce()
-        trq10 = it[10].GetContactTorque()
+        frc1.append(it[7].GetContactForce())
+        trq1.append(it[7].GetContactTorque())
+        frc2.append(it[9].GetContactForce())
+        trq2.append(it[9].GetContactTorque())
+
         myapplication.DoStep()
         myapplication.EndScene()
         
