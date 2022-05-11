@@ -29,26 +29,27 @@ class ChFunction_myf (chrono.ChFunction):
     def __init__(self):
          chrono.ChFunction.__init__(self)
     def Get_y(self,x):
-            return -chrono.CH_C_PI * (-1.27657110e-10*pow(x,10)+2.65351677e-08*pow(x,9)-2.35692901e-06*pow(x,8)+1.16839755e-04*pow(x,7)-3.54346845e-03*pow(x,6)+6.78029658e-02*pow(x,5)-8.14717219e-01*pow(x,4)+5.93038925e+00*pow(x,3)-2.42777622e+01*pow(x,2)+4.87549530e+01*pow(x,1) ) / 2.0
+            print(x)
+            return +(0.00822369*pow(x,4)-0.10333842*pow(x,3)+0.33842684*pow(x,2)-0.08662967*pow(x,1)+0.83319815)
 
 class ChFunction_myf1 (chrono.ChFunction):
     def __init__(self):
          chrono.ChFunction.__init__(self)
     def Get_y(self,x):
-            return -chrono.CH_C_PI * (-1.27657110e-10*pow(x,10)+2.65351677e-08*pow(x,9)-2.35692901e-06*pow(x,8)+1.16839755e-04*pow(x,7)-3.54346845e-03*pow(x,6)+6.78029658e-02*pow(x,5)-8.14717219e-01*pow(x,4)+5.93038925e+00*pow(x,3)-2.42777622e+01*pow(x,2)+4.87549530e+01*pow(x,1) ) / 2.0
+            return  -(chrono.CH_C_PI)/2+(-0.00411854*pow(x,4)+0.04121651*pow(x,3)-0.07025896*pow(x,2)-0.08979798*pow(x,1)+0.92046243)
 
 class ChFunction_myf2 (chrono.ChFunction):
     def __init__(self):
          chrono.ChFunction.__init__(self)
     def Get_y(self,x):
-            return -chrono.CH_C_PI * (2.33933236e-10*pow(x,10)-4.86253314e-08*pow(x,9)+4.32362493e-06*pow(x,8)-2.14816127e-04*pow(x,7)+6.53703984e-03*pow(x,6)-1.25632196e-01*pow(x,5)+1.51737363e+00*pow(x,4)-1.11096508e+01*pow(x,3)+4.57803195e+01*pow(x,2)-9.33340628e+01*pow(x,1)) / 2.0
-
+            return  -(chrono.CH_C_PI)/2+(-0.00411854*pow(x,4)+0.04121651*pow(x,3)-0.07025896*pow(x,2)-0.08979798*pow(x,1)+0.92046243)
 
 class ChFunction_myf3 (chrono.ChFunction):
     def __init__(self):
          chrono.ChFunction.__init__(self)
     def Get_y(self,x):
-            return -chrono.CH_C_PI * (-1.27657110e-10*pow(x,10)+2.65351677e-08*pow(x,9)-2.35692901e-06*pow(x,8)+1.16839755e-04*pow(x,7)-3.54346845e-03*pow(x,6)+6.78029658e-02*pow(x,5)-8.14717219e-01*pow(x,4)+5.93038925e+00*pow(x,3)-2.42777622e+01*pow(x,2)+4.87549530e+01*pow(x,1) ) / 2.0
+            return (0.00822369*pow(x,4)-0.10333842*pow(x,3)+0.33842684*pow(x,2)-0.08662967*pow(x,1)+0.83319815)
+
 
 
 class ChFunction_myf4 (chrono.ChFunction):
@@ -269,16 +270,16 @@ for my_item in exported_items:
 # my_motor.SetAngleFunction(my_angularspeed)
 # #mysystem.Add(my_motor)
 # =============================================================================
-my_motor = chrono.ChLinkMotorRotationSpeed()
+my_motor = chrono.ChLinkMotorRotationAngle()
 my_motor.Initialize(it[4],   # the first connected body
                     it[6],   # the second connected body
                     chrono.ChFrameD(chrono.ChVectorD(-6.93889390390723e-18,-0.01,0.185),chrono.Q_ROTATE_X_TO_Z)) # where to create the motor in abs.space
-#my_angularspeed2 = chrono.ChFunction_Const(chrono.CH_C_PI) # ang.speed: 180°/s
-my_angularspeed = chrono.ChFunction_Sine() # ang.speed: 180°/s
+my_angularspeed = chrono.ChFunction_Const(0) # ang.speed: 180°/s
+#my_angularspeed = chrono.ChFunction_Sine() # ang.speed: 180°/s
 my_motor.SetMotorFunction(my_angularspeed)
-#mysystem.Add(my_motor)
+mysystem.Add(my_motor)
 
-my_motor1 = chrono.ChLinkMotorRotationSpeed()
+my_motor1 = chrono.ChLinkMotorRotationAngle()
 my_motor1.Initialize(it[4],   # the first connected body
                     it[5],   # the second connected body
                     chrono.ChFrameD(chrono.ChVectorD(-9.54097911787244e-18,-0.01,0.015),chrono.Q_ROTATE_X_TO_Z)) # where to create the motor in abs.space
@@ -287,44 +288,48 @@ my_angularspeed1 = chrono.ChFunction_Sine() # ang.speed: 180°/s
 my_motor1.SetMotorFunction(my_angularspeed1)
 #mysystem.Add(my_motor1)
 
-my_motor2 = chrono.ChLinkMotorRotationSpeed()
+my_motor2 = chrono.ChLinkMotorRotationAngle()
 my_motor2.Initialize(it[6],   # the first connected body
                     it[8],   # the second connected body
                     chrono.ChFrameD(chrono.ChVectorD(-0.01,-0.032,0.152))) # where to create the motor in abs.space
 #my_angularspeed2 = chrono.ChFunction_Const(chrono.CH_C_PI) # ang.speed: 180°/s
 my_angularspeed2 = chrono.ChFunction_Sine()
+my_angularspeed2 = ChFunction_myf1()
 #my_angularspeed2 = chrono.ChFunction_Const(chrono.CH_C_PI) # ang.speed: 180°/s
 my_motor2.SetMotorFunction(my_angularspeed2)
-#mysystem.Add(my_motor2)
+mysystem.Add(my_motor2)
 
-my_motor3 = chrono.ChLinkMotorRotationSpeed()
+my_motor3 = chrono.ChLinkMotorRotationAngle()
 my_motor3.Initialize(it[5],   # the first connected body
                     it[2],   # the second connected body
                     chrono.ChFrameD(chrono.ChVectorD(-0.01,-0.032,0.155))) # where to create the motor in abs.space
 #my_angularspeed2 = chrono.ChFunction_Const(chrono.CH_C_PI) # ang.speed: 180°/s
 my_angularspeed3 = chrono.ChFunction_Sine() # ang.speed: 180°/s
+my_angularspeed3 = ChFunction_myf2()
 my_motor3.SetMotorFunction(my_angularspeed3)
-#mysystem.Add(my_motor3)
+mysystem.Add(my_motor3)
 
-my_motor4 = chrono.ChLinkMotorRotationSpeed()
+my_motor4 = chrono.ChLinkMotorRotationAngle()
 my_motor4.Initialize(it[2],   # the first connected body
                     it[1],   # the second connected body
                     chrono.ChFrameD(chrono.ChVectorD(-0.00999999999999999,-0.162,0.175))) # where to create the motor in abs.space
 #my_angularspeed2 = chrono.ChFunction_Const(chrono.CH_C_PI) # ang.speed: 180°/s
 my_angularspeed4 = chrono.ChFunction_Sine() # ang.speed: 180°/s
+my_angularspeed4 = ChFunction_myf3()
 my_motor4.SetMotorFunction(my_angularspeed4)
-#mysystem.Add(my_motor4)
+mysystem.Add(my_motor4)
 
-my_motor5 = chrono.ChLinkMotorRotationSpeed()
+my_motor5 = chrono.ChLinkMotorRotationAngle()
 my_motor5.Initialize(it[8],   # the first connected body
                     it[3],   # the second connected body
                     chrono.ChFrameD(chrono.ChVectorD(-0.00999999999999999,-0.162,0.305))) # where to create the motor in abs.space
 #my_angularspeed2 = chrono.ChFunction_Const(chrono.CH_C_PI) # ang.speed: 180°/s
 my_angularspeed5 = chrono.ChFunction_Sine() # ang.speed: 180°/s
+my_angularspeed5 = ChFunction_myf()
 my_motor5.SetMotorFunction(my_angularspeed5)
-#mysystem.Add(my_motor5)
+mysystem.Add(my_motor5)
 
-my_motor6 = chrono.ChLinkMotorRotationSpeed()
+my_motor6 = chrono.ChLinkMotorRotationAngle()
 my_motor6.Initialize(it[1],   # the first connected body
                     it[7],   # the second connected body
                     chrono.ChFrameD(chrono.ChVectorD(-0.01,-0.292,0.175))) # where to create the motor in abs.space
@@ -333,7 +338,7 @@ my_angularspeed6 = chrono.ChFunction_Sine() # ang.speed: 180°/s
 my_motor6.SetMotorFunction(my_angularspeed6)
 #mysystem.Add(my_motor6)
 
-my_motor7 = chrono.ChLinkMotorRotationSpeed()
+my_motor7 = chrono.ChLinkMotorRotationAngle()
 my_motor7.Initialize(it[3],   # the first connected body
                     it[9],   # the second connected body
                     chrono.ChFrameD(chrono.ChVectorD(-0.00999999999999995,-0.292,0.0750000000000001))) # where to create the motor in abs.space
@@ -342,14 +347,32 @@ my_angularspeed7 = chrono.ChFunction_Sine() # ang.speed: 180°/s
 my_motor7.SetMotorFunction(my_angularspeed7)
 #mysystem.Add(my_motor7)
 
-my_motor8 = chrono.ChLinkMotorRotationSpeed()
+my_motor8 = chrono.ChLinkMotorRotationAngle()
 my_motor8.Initialize(it[4],   # the first connected body
                     it[10],   # the second connected body
                     chrono.ChFrameD(chrono.ChVectorD(-0.01,0.013,0.0126259017947352))) # where to create the motor in abs.space
 #my_angularspeed2 = chrono.ChFunction_Const(chrono.CH_C_PI) # ang.speed: 180°/s
 my_angularspeed8 = chrono.ChFunction_Sine() # ang.speed: 180°/s
-my_motor8.SetMotorFunction(my_angularspeed2)
+my_motor8.SetMotorFunction(my_angularspeed8)
 #mysystem.Add(my_motor8)
+
+motorl = chrono.ChLinkMotorLinearSpeed()
+motorl.Initialize(it[0],it[4],chrono.ChFrameD(chrono.ChVectorD(0,-1.73472347597681e-18,0.2)) ) # motor frame, in abs. coords
+mysystem.Add(motorl)
+msp = chrono.ChFunction_Const(0)  # amplitude
+motorl.SetSpeedFunction(msp)
+
+# motorl = chrono.ChLinkMotorLinearSpeed()
+# motorl.Initialize(it[0],it[7],chrono.ChFrameD(chrono.ChVectorD(0.2,0,0)) ) # motor frame, in abs. coords
+# mysystem.Add(motorl)
+# msp = chrono.ChFunction_Const(0)  # amplitude
+# motorl.SetSpeedFunction(msp)
+
+# motorl = chrono.ChLinkMotorLinearSpeed()
+# motorl.Initialize(it[0],it[9],chrono.ChFrameD(chrono.ChVectorD(0.2,0,0)) ) # motor frame, in abs. coords
+# mysystem.Add(motorl)
+# msp = chrono.ChFunction_Const(0)  # amplitude
+# motorl.SetSpeedFunction(msp)
 
 # my_motor1 = chrono.ChLinkMotorRotationAngle()
 # my_motor1.Initialize(it[5],   # the first connected body
@@ -537,7 +560,7 @@ my_solver = chrono.ChSolverBB()
 mysystem.SetSolver(my_solver)
 my_solver.SetMaxIterations(9000)
 my_solver.EnableWarmStart(True);
-mysystem.Set_G_acc(chrono.ChVectorD(0,-9.8,0))
+mysystem.Set_G_acc(chrono.ChVectorD(0,0,0))
     
 if m_visualization == "irrlicht":
 

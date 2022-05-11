@@ -354,14 +354,14 @@ if m_visualization == "irrlicht":
     myapplication.AssetBindAll()
     myapplication.AssetUpdateAll()
     myapplication.AddShadowAll()
-    myapplication.SetTimestep(0.001)
+    myapplication.SetTimestep(0.0001)
 
     
     while(myapplication.GetDevice().run()):
         myapplication.BeginScene()
         myapplication.DrawAll()
-        a = it[2].GetFrame_COG_to_REF()
-        print(a.x)
+        #a = it[2].GetFrame_COG_to_REF()
+        #print(a.x)
         myapplication.DoStep()
         myapplication.EndScene()
         

@@ -153,7 +153,7 @@ body_4.GetCollisionModel().AddTriangleMesh(material_4,                # contact 
                                             chrono.ChMatrix33D(1),   # orientation on body 
                                             0.01)                    # "thickness" for increased robustness
 body_4.GetCollisionModel().BuildModel()
-body_4.SetBodyFixed(True)
+body_4.SetBodyFixed(False)
 body_4.SetCollide(False)
 
 # Visualization shape 
@@ -1026,28 +1026,28 @@ exported_items.append(link_36)
 # #   Entity 0: C::E name: body_7 , SW name: foot1-1 ,  SW ref.type:2 (2)
 # #   Entity 1: C::E name: body_1 , SW name: Leg-3 ,  SW ref.type:2 (2)
 
-# link_51 = chrono.ChLinkMateParallel()
-# cA = chrono.ChVectorD(0.048512258846341,-0.292,0.00499999999999999)
-# dA = chrono.ChVectorD(1,0,0)
-# cB = chrono.ChVectorD(-3.46944695195361e-18,-0.302,0.045)
-# dB = chrono.ChVectorD(1,-5.55111512312578e-17,-1.08753281892024e-17)
-# link_51.Initialize(body_7,body_1,False,cA,cB,dA,dB)
-# link_51.SetName("Parallel5")
-# exported_items.append(link_51)
+link_51 = chrono.ChLinkMateParallel()
+cA = chrono.ChVectorD(0.048512258846341,-0.292,0.00499999999999999)
+dA = chrono.ChVectorD(1,0,0)
+cB = chrono.ChVectorD(-3.46944695195361e-18,-0.302,0.045)
+dB = chrono.ChVectorD(1,-5.55111512312578e-17,-1.08753281892024e-17)
+link_51.Initialize(body_7,body_1,False,cA,cB,dA,dB)
+link_51.SetName("Parallel5")
+exported_items.append(link_51)
 
 
 # # Mate constraint: Parallel6 [MateParallel] type:3 align:0 flip:False
 # #   Entity 0: C::E name: body_3 , SW name: Leg-4 ,  SW ref.type:2 (2)
 # #   Entity 1: C::E name: body_9 , SW name: foot1-2 ,  SW ref.type:2 (2)
 
-# link_52 = chrono.ChLinkMateParallel()
-# cA = chrono.ChVectorD(4.68375338513738e-17,-0.302,0.175)
-# dA = chrono.ChVectorD(1,1.66533453693774e-16,1.2240371413546e-16)
-# cB = chrono.ChVectorD(0.0485122588463411,-0.292,0.135)
-# dB = chrono.ChVectorD(1,0,0)
-# link_52.Initialize(body_3,body_9,False,cA,cB,dA,dB)
-# link_52.SetName("Parallel6")
-# exported_items.append(link_52)
+link_52 = chrono.ChLinkMateParallel()
+cA = chrono.ChVectorD(4.68375338513738e-17,-0.302,0.175)
+dA = chrono.ChVectorD(1,1.66533453693774e-16,1.2240371413546e-16)
+cB = chrono.ChVectorD(0.0485122588463411,-0.292,0.135)
+dB = chrono.ChVectorD(1,0,0)
+link_52.Initialize(body_3,body_9,False,cA,cB,dA,dB)
+link_52.SetName("Parallel6")
+exported_items.append(link_52)
 
 
 # # Mate constraint: Coincident22 [MateCoincident] type:0 align:0 flip:False
