@@ -22,35 +22,57 @@ import pychrono.postprocess as postprocess
 import pychrono.irrlicht as chronoirr
 import pychrono.vehicle as veh
 import math as m
-
-
+import numpy as np
 
 class ChFunction_myf (chrono.ChFunction):
     def __init__(self):
          chrono.ChFunction.__init__(self)
     def Get_y(self,x):
             print(x)
-            return +(0.00822369*pow(x,4)-0.10333842*pow(x,3)+0.33842684*pow(x,2)-0.08662967*pow(x,1)+0.83319815)
-
+            y = x/6.28
+            y = m.trunc(y)
+            if (y%2==0):
+                x = x%6.28
+                #return +(0.00822369*pow(x,4)-0.10333842*pow(x,3)+0.33842684*pow(x,2)-0.08662967*pow(x,1)+0.83319815)
+                return (4*0.00822369*pow(x,3)-3*0.10333842*pow(x,2)+2*0.33842684*pow(x,1)-0.08662967)
+            else:
+                return 0
+            
 class ChFunction_myf1 (chrono.ChFunction):
     def __init__(self):
          chrono.ChFunction.__init__(self)
     def Get_y(self,x):
-            return  -(chrono.CH_C_PI)/2+(-0.00411854*pow(x,4)+0.04121651*pow(x,3)-0.07025896*pow(x,2)-0.08979798*pow(x,1)+0.92046243)
+        y = x/6.28
+        y = m.trunc(y)
+        if (y%2==0):
+            x = x%6.28  
+            return  -1*(-4*0.00411854*pow(x,3)+3*0.04121651*pow(x,2)-2*0.07025896*pow(x,1)-0.08979798)
+        else:
+            return 0
 
 class ChFunction_myf2 (chrono.ChFunction):
     def __init__(self):
          chrono.ChFunction.__init__(self)
     def Get_y(self,x):
-            return  -(chrono.CH_C_PI)/2+(-0.00411854*pow(x,4)+0.04121651*pow(x,3)-0.07025896*pow(x,2)-0.08979798*pow(x,1)+0.92046243)
-
+        y = x/6.28
+        y = m.trunc(y)
+        if (y%2==1):
+            x = x%6.28
+            return -1*(-4*0.00411854*pow(x,3)+3*0.04121651*pow(x,2)-2*0.07025896*pow(x,1)-0.08979798)
+        else:
+            return 0
+        
 class ChFunction_myf3 (chrono.ChFunction):
     def __init__(self):
          chrono.ChFunction.__init__(self)
     def Get_y(self,x):
-            return (0.00822369*pow(x,4)-0.10333842*pow(x,3)+0.33842684*pow(x,2)-0.08662967*pow(x,1)+0.83319815)
-
-
+            y = x/6.28
+            y = m.trunc(y)
+            if (y%2==1):
+                x = x%6.28
+                return (4*0.00822369*pow(x,3)-3*0.10333842*pow(x,2)+2*0.33842684*pow(x,1)-0.08662967)
+            else:
+                return 0
 
 class ChFunction_myf4 (chrono.ChFunction):
     def __init__(self):
@@ -270,7 +292,7 @@ for my_item in exported_items:
 # my_motor.SetAngleFunction(my_angularspeed)
 # #mysystem.Add(my_motor)
 # =============================================================================
-my_motor = chrono.ChLinkMotorRotationAngle()
+my_motor = chrono.ChLinkMotorRotationSpeed()
 my_motor.Initialize(it[4],   # the first connected body
                     it[6],   # the second connected body
                     chrono.ChFrameD(chrono.ChVectorD(-6.93889390390723e-18,-0.01,0.185),chrono.Q_ROTATE_X_TO_Z)) # where to create the motor in abs.space
@@ -279,57 +301,62 @@ my_angularspeed = chrono.ChFunction_Const(0) # ang.speed: 180°/s
 my_motor.SetMotorFunction(my_angularspeed)
 mysystem.Add(my_motor)
 
-my_motor1 = chrono.ChLinkMotorRotationAngle()
+my_motor1 = chrono.ChLinkMotorRotationSpeed()
 my_motor1.Initialize(it[4],   # the first connected body
                     it[5],   # the second connected body
                     chrono.ChFrameD(chrono.ChVectorD(-9.54097911787244e-18,-0.01,0.015),chrono.Q_ROTATE_X_TO_Z)) # where to create the motor in abs.space
 #my_angularspeed2 = chrono.ChFunction_Const(chrono.CH_C_PI) # ang.speed: 180°/s
 my_angularspeed1 = chrono.ChFunction_Sine() # ang.speed: 180°/s
+my_angularspeed1 = chrono.ChFunction_Const(0) # ang.speed: 180°/s
 my_motor1.SetMotorFunction(my_angularspeed1)
-#mysystem.Add(my_motor1)
+mysystem.Add(my_motor1)
 
-my_motor2 = chrono.ChLinkMotorRotationAngle()
+my_motor2 = chrono.ChLinkMotorRotationSpeed()
 my_motor2.Initialize(it[6],   # the first connected body
                     it[8],   # the second connected body
                     chrono.ChFrameD(chrono.ChVectorD(-0.01,-0.032,0.152))) # where to create the motor in abs.space
 #my_angularspeed2 = chrono.ChFunction_Const(chrono.CH_C_PI) # ang.speed: 180°/s
 my_angularspeed2 = chrono.ChFunction_Sine()
 my_angularspeed2 = ChFunction_myf1()
+#my_angularspeed2 = chrono.ChFunction_Const(0)
 #my_angularspeed2 = chrono.ChFunction_Const(chrono.CH_C_PI) # ang.speed: 180°/s
 my_motor2.SetMotorFunction(my_angularspeed2)
 mysystem.Add(my_motor2)
 
-my_motor3 = chrono.ChLinkMotorRotationAngle()
+my_motor3 = chrono.ChLinkMotorRotationSpeed()
 my_motor3.Initialize(it[5],   # the first connected body
                     it[2],   # the second connected body
                     chrono.ChFrameD(chrono.ChVectorD(-0.01,-0.032,0.155))) # where to create the motor in abs.space
 #my_angularspeed2 = chrono.ChFunction_Const(chrono.CH_C_PI) # ang.speed: 180°/s
 my_angularspeed3 = chrono.ChFunction_Sine() # ang.speed: 180°/s
 my_angularspeed3 = ChFunction_myf2()
+#my_angularspeed3 = chrono.ChFunction_Const(0)
 my_motor3.SetMotorFunction(my_angularspeed3)
 mysystem.Add(my_motor3)
 
-my_motor4 = chrono.ChLinkMotorRotationAngle()
+my_motor4 = chrono.ChLinkMotorRotationSpeed()
 my_motor4.Initialize(it[2],   # the first connected body
                     it[1],   # the second connected body
                     chrono.ChFrameD(chrono.ChVectorD(-0.00999999999999999,-0.162,0.175))) # where to create the motor in abs.space
 #my_angularspeed2 = chrono.ChFunction_Const(chrono.CH_C_PI) # ang.speed: 180°/s
 my_angularspeed4 = chrono.ChFunction_Sine() # ang.speed: 180°/s
 my_angularspeed4 = ChFunction_myf3()
+#my_angularspeed4 = chrono.ChFunction_Const(0)
 my_motor4.SetMotorFunction(my_angularspeed4)
 mysystem.Add(my_motor4)
 
-my_motor5 = chrono.ChLinkMotorRotationAngle()
+my_motor5 = chrono.ChLinkMotorRotationSpeed()
 my_motor5.Initialize(it[8],   # the first connected body
                     it[3],   # the second connected body
                     chrono.ChFrameD(chrono.ChVectorD(-0.00999999999999999,-0.162,0.305))) # where to create the motor in abs.space
 #my_angularspeed2 = chrono.ChFunction_Const(chrono.CH_C_PI) # ang.speed: 180°/s
 my_angularspeed5 = chrono.ChFunction_Sine() # ang.speed: 180°/s
 my_angularspeed5 = ChFunction_myf()
+#my_angularspeed5 = chrono.ChFunction_Const(0)
 my_motor5.SetMotorFunction(my_angularspeed5)
 mysystem.Add(my_motor5)
 
-my_motor6 = chrono.ChLinkMotorRotationAngle()
+my_motor6 = chrono.ChLinkMotorRotationSpeed()
 my_motor6.Initialize(it[1],   # the first connected body
                     it[7],   # the second connected body
                     chrono.ChFrameD(chrono.ChVectorD(-0.01,-0.292,0.175))) # where to create the motor in abs.space
@@ -338,7 +365,7 @@ my_angularspeed6 = chrono.ChFunction_Sine() # ang.speed: 180°/s
 my_motor6.SetMotorFunction(my_angularspeed6)
 #mysystem.Add(my_motor6)
 
-my_motor7 = chrono.ChLinkMotorRotationAngle()
+my_motor7 = chrono.ChLinkMotorRotationSpeed()
 my_motor7.Initialize(it[3],   # the first connected body
                     it[9],   # the second connected body
                     chrono.ChFrameD(chrono.ChVectorD(-0.00999999999999995,-0.292,0.0750000000000001))) # where to create the motor in abs.space
@@ -351,16 +378,20 @@ my_motor8 = chrono.ChLinkMotorRotationAngle()
 my_motor8.Initialize(it[4],   # the first connected body
                     it[10],   # the second connected body
                     chrono.ChFrameD(chrono.ChVectorD(-0.01,0.013,0.0126259017947352))) # where to create the motor in abs.space
-#my_angularspeed2 = chrono.ChFunction_Const(chrono.CH_C_PI) # ang.speed: 180°/s
-my_angularspeed8 = chrono.ChFunction_Sine() # ang.speed: 180°/s
+my_angularspeed8 = chrono.ChFunction_Const(-0.2) # ang.speed: 180°/s
+#my_angularspeed8 = chrono.ChFunction_Sine() # ang.speed: 180°/s
 my_motor8.SetMotorFunction(my_angularspeed8)
-#mysystem.Add(my_motor8)
+mysystem.Add(my_motor8)
 
 motorl = chrono.ChLinkMotorLinearSpeed()
 motorl.Initialize(it[0],it[4],chrono.ChFrameD(chrono.ChVectorD(0,-1.73472347597681e-18,0.2)) ) # motor frame, in abs. coords
-mysystem.Add(motorl)
-msp = chrono.ChFunction_Const(0)  # amplitude
+#mysystem.Add(motorl)
+msp = chrono.ChFunction_Const(5)  # amplitude
 motorl.SetSpeedFunction(msp)
+
+frc2 = chrono.ChForce()
+frc2.SetF_x(msp)
+it[4].AddForce(frc2)
 
 # motorl = chrono.ChLinkMotorLinearSpeed()
 # motorl.Initialize(it[0],it[7],chrono.ChFrameD(chrono.ChVectorD(0.2,0,0)) ) # motor frame, in abs. coords
@@ -513,20 +544,20 @@ torso = []
 
 a = it[2].SetFrame_COG_to_REF
 terrain = veh.SCMDeformableTerrain(mysystem)
-terrain.SetPlane(chrono.ChCoordsysD(chrono.ChVectorD(-0.1,-0.35,-0.1), chrono.Q_from_AngX(-math.pi/2)))
-terrain.Initialize(0.60, 0.40, 0.004)#gives us the dimension of the plane
+terrain.SetPlane(chrono.ChCoordsysD(chrono.ChVectorD(-0.1,-0.3,-0.1), chrono.Q_from_AngX(-math.pi/2)))
+terrain.Initialize(0.60, 0.40, 0.04)#gives us the dimension of the plane
 
 terrain1 = veh.SCMDeformableTerrain(mysystem)
-terrain1.SetPlane(chrono.ChCoordsysD(chrono.ChVectorD(-0.1,-0.35,0.3), chrono.Q_from_AngX(-math.pi/2)))
-terrain1.Initialize(0.60, 0.40, 0.004)#gives us the dimension of the plane
+terrain1.SetPlane(chrono.ChCoordsysD(chrono.ChVectorD(-0.1,-0.3,0.3), chrono.Q_from_AngX(-math.pi/2)))
+terrain1.Initialize(0.60, 0.40, 0.04)#gives us the dimension of the plane
 
 terrain2 = veh.SCMDeformableTerrain(mysystem)
-terrain2.SetPlane(chrono.ChCoordsysD(chrono.ChVectorD(0.5,-0.35,-0.1), chrono.Q_from_AngX(-math.pi/2)))
-terrain2.Initialize(1.0, 0.40, 0.004)#gives us the dimension of the plane
+terrain2.SetPlane(chrono.ChCoordsysD(chrono.ChVectorD(0.5,-0.3,-0.1), chrono.Q_from_AngX(-math.pi/2)))
+terrain2.Initialize(1.0, 0.40, 0.04)#gives us the dimension of the plane
 
 terrain3 = veh.SCMDeformableTerrain(mysystem)
-terrain3.SetPlane(chrono.ChCoordsysD(chrono.ChVectorD(0.5,-0.35,0.3), chrono.Q_from_AngX(-math.pi/2)))
-terrain3.Initialize(1.0, 0.40, 0.004)#gives us the dimension of the plane
+terrain3.SetPlane(chrono.ChCoordsysD(chrono.ChVectorD(0.5,-0.3,0.3), chrono.Q_from_AngX(-math.pi/2)))
+terrain3.Initialize(1.0, 0.40, 0.04)#gives us the dimension of the plane
 
 my_params = MySoilParams()
 my_params1 = MySoilParams1()
@@ -552,7 +583,7 @@ else :
     )
 
 # Set terrain visualization mode
-terrain.SetPlotType(veh.SCMDeformableTerrain.PLOT_PRESSURE, 0, 30000.2)
+terrain.SetPlotType(veh.SCMDeformableTerrain.PLOT_PRESSURE, 0, 300.2)
 
 
 #my_system.SetMaxPenetrationRecoverySpeed(1.00)
@@ -560,11 +591,11 @@ my_solver = chrono.ChSolverBB()
 mysystem.SetSolver(my_solver)
 my_solver.SetMaxIterations(9000)
 my_solver.EnableWarmStart(True);
-mysystem.Set_G_acc(chrono.ChVectorD(0,0,0))
-    
+mysystem.Set_G_acc(chrono.ChVectorD(0,-9.8,0))
+
 if m_visualization == "irrlicht":
 
-    # ---------------------------------------------------------------------
+    # ---------------------------------------frc2------------------------------
     #
     #  Create an Irrlicht application to visualize the system
     #
@@ -572,7 +603,7 @@ if m_visualization == "irrlicht":
     myapplication = chronoirr.ChIrrApp(mysystem, 'Deformable soil', chronoirr.dimension2du(1280,720), False, True)
     myapplication.AddTypicalSky()
     #myapplication.AddTypicalLogo(chrono.GetChronoDataFile('logo_pychrono_alpha.png'))
-    myapplication.AddTypicalCamera(chronoirr.vector3df(2.0,1.4,0.0), chronoirr.vector3df(0,tire_rad,0))
+    myapplication.AddTypicalCamera(chronoirr.vector3df(2.5,0.0,0), chronoirr.vector3df(0.3,0,0))
     myapplication.AddTypicalLights()
     myapplication.AddLightWithShadow(chronoirr.vector3df(1.5,5.5,-2.5),    # point
                                  chronoirr.vector3df(0,0,0),           # aim point
@@ -584,7 +615,7 @@ if m_visualization == "irrlicht":
     myapplication.AssetBindAll()
     myapplication.AssetUpdateAll()
     myapplication.AddShadowAll()
-    myapplication.SetTimestep(0.01)
+    myapplication.SetTimestep(0.0001)
 
     
     while(myapplication.GetDevice().run()):
@@ -615,8 +646,18 @@ if m_visualization == "irrlicht":
         trq1.append(it[7].GetContactTorque())
         frc2.append(it[9].GetContactForce())
         trq2.append(it[9].GetContactTorque())
-
         myapplication.DoStep()
         myapplication.EndScene()
+        
+    frc1np = np.array(frc1)
+    frc2np = np.array(frc2)
+    trq1np = np.array(trq1)
+    trq2np = np.array(trq2)
+    np.savetxt('frc1.npy', frc1np ,fmt='%s')
+    np.savetxt('frc2.npy', frc2np ,fmt='%s')
+    np.savetxt('trq1.npy', trq1np ,fmt='%s')
+    np.savetxt('trq2.npy', trq2np ,fmt='%s')
+
+    
         
         

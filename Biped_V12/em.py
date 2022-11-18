@@ -16,13 +16,14 @@ body_0= chrono.ChBodyAuxRef()
 body_0.SetName('ground')
 body_0.SetBodyFixed(True)
 exported_items.append(body_0)
-
+c = 0.1
 # Rigid body part
 body_1= chrono.ChBodyAuxRef()
 body_1.SetName('Leg-3')
 body_1.SetPos(chrono.ChVectorD(-0.01,-0.152,0.035))
 body_1.SetRot(chrono.ChQuaternionD(0.5,0.5,0.5,-0.5))
-body_1.SetMass(0.011085840734641)
+mass_1 = 1.1*c
+body_1.SetMass(mass_1)
 body_1.SetInertiaXX(chrono.ChVectorD(1.34525745095411e-06,2.07315501130413e-05,2.07051345548124e-05))
 body_1.SetInertiaXY(chrono.ChVectorD(-1.19310927247884e-21,2.27038592924694e-21,-6.79449337904933e-23))
 body_1.SetFrame_COG_to_REF(chrono.ChFrameD(chrono.ChVectorD(-7.20024478836964e-18,3.65080953080327e-18,0.075),chrono.ChQuaternionD(1,0,0,0)))
@@ -42,6 +43,7 @@ body_1.GetCollisionModel().BuildModel()
 body_1.SetBodyFixed(False)
 body_1.SetCollide(False)
 
+
 # Visualization shape 
 body_1_1_shape = chrono.ChObjShapeFile() 
 body_1_1_shape.SetFilename(shapes_dir +'body_1_1.obj') 
@@ -50,7 +52,9 @@ body_1_1_level.GetFrame().SetPos(chrono.ChVectorD(0,0,0))
 body_1_1_level.GetFrame().SetRot(chrono.ChQuaternionD(1,0,0,0)) 
 body_1_1_level.GetAssets().push_back(body_1_1_shape) 
 body_1.GetAssets().push_back(body_1_1_level) 
-
+mvisual = chrono.ChColorAsset()
+mvisual.SetColor(chrono.ChColor(0, 0, 0.6))
+body_1.GetAssets().push_back(mvisual)
 exported_items.append(body_1)
 
 
@@ -60,7 +64,8 @@ body_2= chrono.ChBodyAuxRef()
 body_2.SetName('Leg-2')
 body_2.SetPos(chrono.ChVectorD(-0.01,-0.022,0.015))
 body_2.SetRot(chrono.ChQuaternionD(0.5,0.5,0.5,-0.5))
-body_2.SetMass(0.011085840734641)
+mass_2 = 1.1*c
+body_2.SetMass(mass_2)
 body_2.SetInertiaXX(chrono.ChVectorD(1.34525745095411e-06,2.07315501130413e-05,2.07051345548124e-05))
 body_2.SetInertiaXY(chrono.ChVectorD(-7.87872102851528e-22,2.46273496553236e-21,-6.20795015996825e-23))
 body_2.SetFrame_COG_to_REF(chrono.ChFrameD(chrono.ChVectorD(-7.20024478836964e-18,3.65080953080327e-18,0.075),chrono.ChQuaternionD(1,0,0,0)))
@@ -98,7 +103,8 @@ body_3= chrono.ChBodyAuxRef()
 body_3.SetName('Leg-4')
 body_3.SetPos(chrono.ChVectorD(-0.00999999999999997,-0.152,0.165))
 body_3.SetRot(chrono.ChQuaternionD(0.5,0.5,0.5,-0.5))
-body_3.SetMass(0.011085840734641)
+mass_3 = 1.1*c
+body_3.SetMass(mass_3)
 body_3.SetInertiaXX(chrono.ChVectorD(1.34525745095411e-06,2.07315501130413e-05,2.07051345548124e-05))
 body_3.SetInertiaXY(chrono.ChVectorD(1.39067724774978e-21,2.28798361809534e-21,-6.20795015996823e-23))
 body_3.SetFrame_COG_to_REF(chrono.ChFrameD(chrono.ChVectorD(-7.20024478836964e-18,3.65080953080327e-18,0.075),chrono.ChQuaternionD(1,0,0,0)))
@@ -126,7 +132,9 @@ body_1_1_level.GetFrame().SetPos(chrono.ChVectorD(0,0,0))
 body_1_1_level.GetFrame().SetRot(chrono.ChQuaternionD(1,0,0,0)) 
 body_1_1_level.GetAssets().push_back(body_1_1_shape) 
 body_3.GetAssets().push_back(body_1_1_level) 
-
+mvisual = chrono.ChColorAsset()
+mvisual.SetColor(chrono.ChColor(0.9, 0.4, 0.2))
+body_3.AddAsset(mvisual)
 exported_items.append(body_3)
 
 
@@ -136,7 +144,8 @@ body_4= chrono.ChBodyAuxRef()
 body_4.SetName('Torso-1')
 body_4.SetPos(chrono.ChVectorD(-0.01,-0.01,0))
 body_4.SetRot(chrono.ChQuaternionD(1,0,0,0))
-body_4.SetMass(0.0794300888156923)
+mass_4 = 8*c
+body_4.SetMass(mass_4)
 body_4.SetInertiaXX(chrono.ChVectorD(0.000248006416683945,0.000247004620963395,6.33116889534285e-06))
 body_4.SetInertiaXY(chrono.ChVectorD(1.6352040884541e-22,-9.47934927655647e-22,-1.25897424978118e-07))
 body_4.SetFrame_COG_to_REF(chrono.ChFrameD(chrono.ChVectorD(-5.74249945955401e-20,0.000623802321415735,0.100085017945798),chrono.ChQuaternionD(1,0,0,0)))
@@ -164,7 +173,9 @@ body_4_1_level.GetFrame().SetPos(chrono.ChVectorD(0,0,0))
 body_4_1_level.GetFrame().SetRot(chrono.ChQuaternionD(1,0,0,0)) 
 body_4_1_level.GetAssets().push_back(body_4_1_shape) 
 body_4.GetAssets().push_back(body_4_1_level) 
-
+mvisual = chrono.ChColorAsset()
+mvisual.SetColor(chrono.ChColor(0.9, 0.4, 0.2))
+body_4.AddAsset(mvisual)
 exported_items.append(body_4)
 
 
@@ -174,7 +185,8 @@ body_5= chrono.ChBodyAuxRef()
 body_5.SetName('hinge-1')
 body_5.SetPos(chrono.ChVectorD(0.00199999999999999,-0.01,0.015))
 body_5.SetRot(chrono.ChQuaternionD(0.707106781186548,6.2975033361764e-17,-0.707106781186547,6.2975033361764e-17))
-body_5.SetMass(0.00570044257124357)
+mass_5 = 5.7*c
+body_5.SetMass(mass_5)
 body_5.SetInertiaXX(chrono.ChVectorD(1.41039569856009e-06,1.16788839933545e-06,1.10258717378839e-06))
 body_5.SetInertiaXY(chrono.ChVectorD(-1.4121301533017e-22,-8.39153753563626e-24,-8.43294433353497e-23))
 body_5.SetFrame_COG_to_REF(chrono.ChFrameD(chrono.ChVectorD(-3.64511644975648e-18,-0.0138096716915232,0.012),chrono.ChQuaternionD(1,0,0,0)))
@@ -202,7 +214,9 @@ body_5_1_level.GetFrame().SetPos(chrono.ChVectorD(0,0,0))
 body_5_1_level.GetFrame().SetRot(chrono.ChQuaternionD(1,0,0,0)) 
 body_5_1_level.GetAssets().push_back(body_5_1_shape) 
 body_5.GetAssets().push_back(body_5_1_level) 
-
+mvisual = chrono.ChColorAsset()
+mvisual.SetColor(chrono.ChColor(0.9, 0.4, 0.2))
+body_5.AddAsset(mvisual)
 exported_items.append(body_5)
 
 
@@ -212,7 +226,8 @@ body_6= chrono.ChBodyAuxRef()
 body_6.SetName('hinge-2')
 body_6.SetPos(chrono.ChVectorD(-0.022,-0.01,0.185))
 body_6.SetRot(chrono.ChQuaternionD(0.707106781186548,-1.2266347333467e-16,0.707106781186547,0))
-body_6.SetMass(0.00570044257124357)
+mass_6 = 5.7*c
+body_6.SetMass(mass_6)
 body_6.SetInertiaXX(chrono.ChVectorD(1.41039569856009e-06,1.16788839933545e-06,1.10258717378839e-06))
 body_6.SetInertiaXY(chrono.ChVectorD(1.83281325836241e-22,-4.57638357211045e-23,8.40259268341968e-23))
 body_6.SetFrame_COG_to_REF(chrono.ChFrameD(chrono.ChVectorD(-3.64511644975648e-18,-0.0138096716915232,0.012),chrono.ChQuaternionD(1,0,0,0)))
@@ -240,7 +255,9 @@ body_5_1_level.GetFrame().SetPos(chrono.ChVectorD(0,0,0))
 body_5_1_level.GetFrame().SetRot(chrono.ChQuaternionD(1,0,0,0)) 
 body_5_1_level.GetAssets().push_back(body_5_1_shape) 
 body_6.GetAssets().push_back(body_5_1_level) 
-
+mvisual = chrono.ChColorAsset()
+mvisual.SetColor(chrono.ChColor(0.9, 0.4, 0.2))
+body_6.AddAsset(mvisual)
 exported_items.append(body_6)
 
 
@@ -250,7 +267,8 @@ body_7= chrono.ChBodyAuxRef()
 body_7.SetName('foot1-1')
 body_7.SetPos(chrono.ChVectorD(-0.00999999999999999,-0.292,0.00499999999999999))
 body_7.SetRot(chrono.ChQuaternionD(1,0,0,0))
-body_7.SetMass(0.065356303269199)
+mass_7 = 6.5*c
+body_7.SetMass(mass_7)
 body_7.SetInertiaXX(chrono.ChVectorD(2.43703717003532e-05,4.33262746998229e-05,2.33784397310327e-05))
 body_7.SetInertiaXY(chrono.ChVectorD(1.58581308825401e-22,1.13563087027456e-21,2.19260683720243e-22))
 body_7.SetFrame_COG_to_REF(chrono.ChFrameD(chrono.ChVectorD(0.029798870148641,-5.5016379469576e-19,0.03),chrono.ChQuaternionD(1,0,0,0)))
@@ -268,7 +286,7 @@ body_7.GetCollisionModel().AddTriangleMesh(material_7,                # contact 
                                             0.01)                    # "thickness" for increased robustness
 body_7.GetCollisionModel().BuildModel()
 body_7.SetBodyFixed(False)
-body_7.SetCollide(False)
+body_7.SetCollide(True)
 
 # Visualization shape 
 body_7_1_shape = chrono.ChObjShapeFile() 
@@ -278,7 +296,9 @@ body_7_1_level.GetFrame().SetPos(chrono.ChVectorD(0,0,0))
 body_7_1_level.GetFrame().SetRot(chrono.ChQuaternionD(1,0,0,0)) 
 body_7_1_level.GetAssets().push_back(body_7_1_shape) 
 body_7.GetAssets().push_back(body_7_1_level) 
-
+mvisual = chrono.ChColorAsset()
+mvisual.SetColor(chrono.ChColor(0.9, 0.4, 0.2))
+body_7.AddAsset(mvisual)
 exported_items.append(body_7)
 
 
@@ -288,7 +308,8 @@ body_8= chrono.ChBodyAuxRef()
 body_8.SetName('Leg-1')
 body_8.SetPos(chrono.ChVectorD(-0.01,-0.022,0.185))
 body_8.SetRot(chrono.ChQuaternionD(0.5,0.5,0.5,-0.5))
-body_8.SetMass(0.011085840734641)
+mass_8 = 1.1*c
+body_8.SetMass(mass_8)
 body_8.SetInertiaXX(chrono.ChVectorD(1.34525745095411e-06,2.07315501130413e-05,2.07051345548124e-05))
 body_8.SetInertiaXY(chrono.ChVectorD(1.39078120802915e-21,2.28840322208664e-21,-6.20795015996823e-23))
 body_8.SetFrame_COG_to_REF(chrono.ChFrameD(chrono.ChVectorD(-7.20024478836964e-18,3.65080953080327e-18,0.075),chrono.ChQuaternionD(1,0,0,0)))
@@ -316,7 +337,9 @@ body_1_1_level.GetFrame().SetPos(chrono.ChVectorD(0,0,0))
 body_1_1_level.GetFrame().SetRot(chrono.ChQuaternionD(1,0,0,0)) 
 body_1_1_level.GetAssets().push_back(body_1_1_shape) 
 body_8.GetAssets().push_back(body_1_1_level) 
-
+mvisual = chrono.ChColorAsset()
+mvisual.SetColor(chrono.ChColor(0.9, 0.4, 0.2))
+body_8.AddAsset(mvisual)
 exported_items.append(body_8)
 
 
@@ -326,7 +349,8 @@ body_9= chrono.ChBodyAuxRef()
 body_9.SetName('foot1-2')
 body_9.SetPos(chrono.ChVectorD(-0.00999999999999995,-0.292,0.135))
 body_9.SetRot(chrono.ChQuaternionD(1,0,0,0))
-body_9.SetMass(0.065356303269199)
+mass_9 = 6.5*c
+body_9.SetMass(mass_9)
 body_9.SetInertiaXX(chrono.ChVectorD(2.43703717003532e-05,4.33262746998229e-05,2.33784397310327e-05))
 body_9.SetInertiaXY(chrono.ChVectorD(1.58581308825401e-22,1.13563087027456e-21,2.19260683720243e-22))
 body_9.SetFrame_COG_to_REF(chrono.ChFrameD(chrono.ChVectorD(0.029798870148641,-5.5016379469576e-19,0.03),chrono.ChQuaternionD(1,0,0,0)))
@@ -344,7 +368,7 @@ body_9.GetCollisionModel().AddTriangleMesh(material_9,                # contact 
                                             0.01)                    # "thickness" for increased robustness
 body_9.GetCollisionModel().BuildModel()
 body_9.SetBodyFixed(False)
-body_9.SetCollide(False)
+body_9.SetCollide(True)
 
 # Visualization shape 
 body_7_1_shape = chrono.ChObjShapeFile() 
@@ -354,7 +378,9 @@ body_7_1_level.GetFrame().SetPos(chrono.ChVectorD(0,0,0))
 body_7_1_level.GetFrame().SetRot(chrono.ChQuaternionD(1,0,0,0)) 
 body_7_1_level.GetAssets().push_back(body_7_1_shape) 
 body_9.GetAssets().push_back(body_7_1_level) 
-
+mvisual = chrono.ChColorAsset()
+mvisual.SetColor(chrono.ChColor(0.9, 0.4, 0.2))
+body_9.AddAsset(mvisual)
 exported_items.append(body_9)
 
 
@@ -364,7 +390,7 @@ body_10= chrono.ChBodyAuxRef()
 body_10.SetName('torso1-1')
 body_10.SetPos(chrono.ChVectorD(-0.01,0.00499999999999999,0.102625901794735))
 body_10.SetRot(chrono.ChQuaternionD(-5.88784672006416e-17,-5.88784672006416e-17,0.707106781186548,0.707106781186547))
-body_10.SetMass(0.0617380532894154)
+body_10.SetMass(6.17380532894154)
 body_10.SetInertiaXX(chrono.ChVectorD(0.00012641536678301,4.17091092258525e-06,0.000126470407486301))
 body_10.SetInertiaXY(chrono.ChVectorD(-4.41290396966699e-22,8.84120771109308e-23,6.2838153866945e-22))
 body_10.SetFrame_COG_to_REF(chrono.ChFrameD(chrono.ChVectorD(3.46944695195361e-18,-1.73472347597681e-18,0.0826379219052898),chrono.ChQuaternionD(1,0,0,0)))
